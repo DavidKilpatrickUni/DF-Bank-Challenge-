@@ -26,7 +26,7 @@ class Account {
         this.#balance = newBalance;
     }
 
-    addTransaction() {
+    addTransaction(transactionObject) {
         this.#transactionList = [transactionObject, ...this.#transactionList]
     }
 
