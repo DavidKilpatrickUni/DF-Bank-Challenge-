@@ -44,7 +44,7 @@ class Account {
 
     accountDeposit(transactionObject, amount) {
         transactionObject.deposit(amount);
-        makeTransaction(transactionObject);
+        this.makeTransaction(transactionObject);
     }
 
 

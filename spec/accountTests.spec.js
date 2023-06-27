@@ -1,14 +1,18 @@
 import Account from '../src/Account.js';
 
 class MockTransaction1 {
+
     getTransactionID = () => 'New Transaction1';
+    deposit = amount => { };
 }
 
 class MockTransaction2 {
+
     getTransactionID = () => 'New Transaction2';
 }
 
 class MockTransaction3 {
+
     getTransactionID = () => 'New Transaction3';
 }
 
