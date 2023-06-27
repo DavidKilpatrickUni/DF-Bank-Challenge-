@@ -102,5 +102,19 @@ describe('Account Tests - User Story 1', () => {
 
     });
 
+    it('test 8 - should return transaction list same as expected list ', () => {
+        //Arrange
+        let testArray = [transaction1, transaction2, transaction3]
+
+        //Act
+        account.addTransaction(transaction1);
+        account.addTransaction(transaction2);
+        account.addTransaction(transaction3);
+
+        //Assert
+        expect(JSON.stringify(testArray)).toBe(JSON.stringify(account.getTransactions()));
+
+    });
+
 
 })
