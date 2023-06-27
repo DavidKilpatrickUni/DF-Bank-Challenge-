@@ -2,6 +2,9 @@ import Transaction from '../src/Transaction.js';
 
 class MockAccount {
     getBalance = () => 0;
+    setBalance(amount) {
+        this.getBalance += amount
+    };
 }
 
 describe('Transaction Tests - User Story 2', () => {
@@ -55,7 +58,7 @@ describe('Transaction Tests - User Story 2', () => {
         transaction1.deposit(amount);
 
         //Assert
-        expect(transaction1.getBalance).toBe(1000);
+        expect(transaction1.getAmountDeposited()).toBe(1000);
     });
 
 
