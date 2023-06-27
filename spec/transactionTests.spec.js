@@ -8,20 +8,16 @@ class MockAccount {
 describe('Transaction Tests - User Story 2', () => {
 
     let account;
-    let transaction1, transaction2, transaction3;
+    let transaction1;
 
     beforeEach(() => {
         account = new MockAccount('Test Account');
         transaction1 = new Transaction(account.getBalance());
-        transaction2 = new Transaction(account.getBalance());
-        transaction3 = new Transaction(account.getBalance());
     });
 
     afterEach(() => {
         account = undefined;
         transaction1 = undefined;
-        transaction2 = undefined;
-        transaction3 = undefined;
     });
 
     it('test 1 - should call deposit method', () => {
@@ -161,7 +157,7 @@ describe('Transaction Tests - User Story 2', () => {
 
     it('test 9 - should return true that input is a Transaction object ', () => {
 
-        let actual = Transaction.checkInputIsTransactionObject(transaction)
+        let actual = Transaction.checkInputIsTransactionObject(transaction1)
 
         expect(actual).toBeTrue;
 

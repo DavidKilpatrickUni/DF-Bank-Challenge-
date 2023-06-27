@@ -16,6 +16,10 @@ class Transaction {
         this.#date = new Date();
     }
 
+    static checkInputIsTransactionObject(input) {
+        return input instanceof Transaction;
+    }
+
     getTransactionID() {
         return this.#transactionID;
     }
