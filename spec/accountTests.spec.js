@@ -1,19 +1,16 @@
 import Account from '../src/Account.js';
 
 class MockTransaction1 {
-
     getTransactionID = () => 'New Transaction1';
     deposit = amount => { };
 }
 
 class MockTransaction2 {
-
     getTransactionID = () => 'New Transaction2';
     deposit = amount => { };
 }
 
 class MockTransaction3 {
-
     getTransactionID = () => 'New Transaction3';
     deposit = amount => { };
 }
@@ -286,5 +283,14 @@ describe('Account Tests - User Story 2', () => {
         expect(depositSpy).toHaveBeenCalledWith(amount);
     });
 
+    it('test 23 - should return balance of 1000 in Account since 1000 was deposited', () => {
+        //Arrange
+        const amount = 1000;
 
+        //Act
+        account.accountDeposit(transaction1, amount);
+
+        //Assert
+        expect(account.getBalance()).toBe(1000);
+    });
 })
