@@ -205,7 +205,7 @@ describe('Transaction Tests - User Story 3', () => {
         transaction1 = undefined;
     });
 
-    it('test 13 - should call deposit method', () => {
+    it('test 13 - should call withdraw method', () => {
         //Arrange
         const withdrawSpy = spyOn(transaction1, 'withdraw')
         const amount = 1000;
@@ -215,6 +215,42 @@ describe('Transaction Tests - User Story 3', () => {
 
         //Assert
         expect(withdrawSpy).toHaveBeenCalled;
+    });
+
+    it('test 14 - should call withdraw method with parameter', () => {
+        //Arrange
+        const withdrawSpy = spyOn(transaction1, 'withdraw')
+        const amount = 1000;
+
+        //Act
+        transaction1.withdraw(amount);
+
+        //Assert
+        expect(withdrawSpy).toHaveBeenCalledWith(amount);
+    });
+
+    it('test 15 - should call setAccountBalanceMinus method', () => {
+        //Arrange
+        const withdrawSpy = spyOn(transaction1, 'setAccountBalanceMinus')
+        const amount = 1000;
+
+        //Act
+        transaction1.withdraw(amount);
+
+        //Assert
+        expect(withdrawSpy).toHaveBeenCalled;
+    });
+
+    it('test 16 - should call setAccountBalanceMinus method with parameter', () => {
+        //Arrange
+        const withdrawSpy = spyOn(transaction1, 'setAccountBalanceMinus')
+        const amount = 1000;
+
+        //Act
+        transaction1.withdraw(amount);
+
+        //Assert
+        expect(withdrawSpy).toHaveBeenCalledWith(amount);
     });
 
 })

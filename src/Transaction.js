@@ -34,8 +34,13 @@ class Transaction {
         return this.#balance;
     }
 
+    // Next two methods are so the amount is correctly added or removed from balance as the parameter passed to both is a positive value i.e withdraw 500 is not -500
     setAccountBalancePlus(amount) {
         this.#balance += amount;
+    }
+
+    setAccountBalanceMinus(amount) {
+        this.#balance -= amount;
     }
 
     getAmountDeposited() {
