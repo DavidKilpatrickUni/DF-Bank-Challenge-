@@ -57,7 +57,7 @@ So that we can do business through transactions
               -balance @Number;
               -listOfTransaction @Array[Transaction]; -makeTransaction(@Transaction);  -@void;                 
                 
--Transaction;
+-Transaction; -transactionID @Number
 
 ### User Story 2
 As a bank company
@@ -69,15 +69,27 @@ So their money can be stored, tracked and recorded within the company
 -Account;                                             -accountDeposit(@Transaction, @Number)        -@void
              
                                             
--Transaction    -usedAccount @Account;                -deposit(@number)                             -@void
+-Transaction    -date @Date                           -deposit(@number)                             -@void
                 -amountDeposited @Number;             -setAccountBalancePlus(@Number)               -@void
                 -balance @Number;
-                -date @Date
+                
 
 ### User Story 3
 As a bank company 
 I want customers to be able to withdraw money from their accounts
 So customers can retrieve their money whilst keeping the companies records correct
+
+
+-Objects;       -Properties;                          -Messages;                                    -Output;
+                                                   
+-Account;                                             -accountDeposit(@Transaction, @Number)        -@void
+             
+                                            
+-Transaction    -amountWithdrawn @Number;             -withdraw(@number)                            -@void
+                                                      -setAccountBalanceMinus(@Number)              -@void
+                
+                
+
 
 ### User Story 4
 As a bank company

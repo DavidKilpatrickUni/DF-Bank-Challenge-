@@ -189,3 +189,32 @@ describe('Transaction Tests - User Story 2', () => {
     });
 
 })
+
+describe('Transaction Tests - User Story 3', () => {
+
+    let account;
+    let transaction1;
+
+    beforeEach(() => {
+        account = new MockAccount('Test Account');
+        transaction1 = new Transaction(account.getBalance());
+    });
+
+    afterEach(() => {
+        account = undefined;
+        transaction1 = undefined;
+    });
+
+    it('test 13 - should call deposit method', () => {
+        //Arrange
+        const withdrawSpy = spyOn(transaction1, 'withdraw')
+        const amount = 1000;
+
+        //Act
+        transaction1.withdraw(amount);
+
+        //Assert
+        expect(withdrawSpy).toHaveBeenCalled;
+    });
+
+})
