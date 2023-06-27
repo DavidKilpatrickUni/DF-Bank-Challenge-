@@ -69,9 +69,9 @@ So their money can be stored, tracked and recorded within the company
 -Account;                                             -accountDeposit(@Transaction, @Number)        -@void
              
                                             
--Transaction    -date @Date                           -deposit(@number)                             -@void
+-Transaction    -balance @Number;                     -deposit(@number)                             -@void
                 -amountDeposited @Number;             -setAccountBalancePlus(@Number)               -@void
-                -balance @Number;
+                
                 
 
 ### User Story 3
@@ -95,6 +95,14 @@ So customers can retrieve their money whilst keeping the companies records corre
 As a bank company
 I want printable bank statements of accounts
 So customers can see transfers (deposit or withdraw), date of said transfers and the account balance
+
+-Objects;       -Properties;                          -Messages;                                    -Output;
+                                                   
+-Printer;                                             -printTransactions(@Array[Transaction])       -console.log(@String)
+             
+                                            
+-Transaction    -date Date();                         -dateFormat(@Date)                            -@Date
+                                                      
 
 
 ### Extended 

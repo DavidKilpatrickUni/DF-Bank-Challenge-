@@ -3,6 +3,7 @@ import Account from '../src/Account.js';
 class MockTransaction1 {
     getTransactionID = () => 'New Transaction1';
     deposit = amount => { };
+    withdraw = amount => { };
 }
 
 class MockTransaction2 {
@@ -320,7 +321,7 @@ describe('Account Tests - User Story 3', () => {
         transaction3 = undefined;
     });
 
-    it('test 24 - should call accountWith method within the Account class ', () => {
+    it('test 24 - should call accountWithdraw method within the Account class ', () => {
         //Arrange
         const accountWithdrawSpy = spyOn(account, 'accountWithdraw')
         const amount = 1000;
@@ -332,7 +333,7 @@ describe('Account Tests - User Story 3', () => {
         expect(accountWithdrawSpy).toHaveBeenCalled;
     });
 
-    it('test 25 - should call accountWith method within the Account class with parameters', () => {
+    it('test 25 - should call accountWithdraw method within the Account class with parameters', () => {
         //Arrange
         const accountWithdrawSpy = spyOn(account, 'accountWithdraw')
         const amount = 1000;
@@ -353,5 +354,40 @@ describe('Account Tests - User Story 3', () => {
 
         //Assert
         expect(account.getTransactions().length).toBe(1);
+    });
+
+    it('test 27 - should call Withdraw method within the (Mock) Transaction class ', () => {
+        //Arrange
+        const withdrawSpy = spyOn(transaction1, 'withdraw')
+        const amount = 1000;
+
+        //Act
+        account.accountWithdraw(transaction1, amount);
+
+        //Assert
+        expect(withdrawSpy).toHaveBeenCalled;
+    });
+
+    it('test 28 - should call Withdraw method within the (Mock) Transaction class with parameter', () => {
+        //Arrange
+        const withdrawSpy = spyOn(transaction1, 'withdraw')
+        const amount = 1000;
+
+        //Act
+        account.accountWithdraw(transaction1, amount);
+
+        //Assert
+        expect(withdrawSpy).toHaveBeenCalledWith(amount);
+    });
+
+    it('test 29 - should return balance of -1000 in Account since 1000 was withdrawn', () => {
+        //Arrange
+        const amount = -1000;
+
+        //Act
+        account.accountWithdraw(transaction1, amount);
+
+        //Assert
+        expect(account.getBalance()).toBe(1000);
     });
 });
