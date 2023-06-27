@@ -132,7 +132,7 @@ describe('Account Tests - User Story 1', () => {
 
     });
 
-    it('test 11 - should return false that input is a String', () => {
+    it('test 11 - should return false that input is not a String', () => {
 
         let actual = Account.checkInputOfAccountID(346)
 
@@ -149,13 +149,47 @@ describe('Account Tests - User Story 1', () => {
 
     });
 
-    // Test 13 - Not required here, but is good to check an account is an Account object if adding to an array of accounts or customers at a certain bank etc
 
-    it('test 13 - should return true that input is a Account object ', () => {
+    it('test 13 - should return false - i.e deals with blank/empty', () => {
+
+        let actual = Account.checkInputOfAccountID()
+
+        expect(actual).toBeFalse;
+
+    });
+
+    // Test 14 - Not required here, but is good to check an account is an Account object if adding to an array of accounts or customers at a certain bank etc
+
+    it('test 14 - should return true that input is a Account object ', () => {
 
         let actual = Account.checkInputIsAccountObject(account)
 
         expect(actual).toBeTrue;
+
+    });
+
+    it('test 15 - should return false that input is not a Account instance', () => {
+
+        let actual = Account.checkInputIsAccountObject(346)
+
+        expect(actual).toBeFalse;
+
+    });
+
+
+    it('test 16 - should return false - i.e deals with Null', () => {
+
+        let actual = Account.checkInputIsAccountObject(null)
+
+        expect(actual).toBeFalse;
+
+    });
+
+    it('test 16 - should return false - i.e deals with blank/empty', () => {
+
+        let actual = Account.checkInputIsAccountObject()
+
+        expect(actual).toBeFalse;
 
     });
 })
