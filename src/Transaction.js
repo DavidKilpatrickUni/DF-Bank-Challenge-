@@ -3,6 +3,7 @@ class Transaction {
     #transactionID = 0;
     //#usedAccount;
     #amountDeposited;
+    #amountWithdrawn;
     #balance;
     #date;
 
@@ -11,6 +12,7 @@ class Transaction {
         //this.#usedAccount = usedAccount;    Details about the account not required
         this.#transactionID++;
         this.#amountDeposited;
+        this.#amountWithdrawn;
         //this.#balance = usedAccount.getBalance();   Balance of Account not required
         this.#balance = balance;
         this.#date = new Date();
@@ -44,6 +46,14 @@ class Transaction {
         this.#amountDeposited = amount;
     }
 
+    getAmountWithdrawn() {
+        return this.#amountWithdrawn;
+    }
+
+    setAmountWithdrawn(amount) {
+        this.#amountWithdrawn = amount;
+    }
+
     getDate() {
         return this.#date;
     }
@@ -57,6 +67,11 @@ class Transaction {
         this.setAmountDeposited(amount);
         // this.#usedAccount.setBalance(this.#usedAccount.getBalance() + amount); 
         // Discussed this. Even though transaction isnt made, balance can be changed in Account class. Perhaps some sort of check in account that transaction was success would solve my overthinking issue
+    }
+
+    withdraw(amount) {
+        this.setAccountBalanceMinus(amount);
+        this.setAmountWithdrawn(amount);
     }
 
 }
