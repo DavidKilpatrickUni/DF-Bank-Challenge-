@@ -157,4 +157,39 @@ describe('Transaction Tests - User Story 2', () => {
     // });
 
 
+    // User input validation
+
+    it('test 9 - should return true that input is a Transaction object ', () => {
+
+        let actual = Transaction.checkInputIsTransactionObject(transaction)
+
+        expect(actual).toBeTrue;
+
+    });
+
+    it('test 10 - should return false that input is not a Transaction instance', () => {
+
+        let actual = Transaction.checkInputIsTransactionObject(346)
+
+        expect(actual).toBeFalse;
+
+    });
+
+
+    it('test 11 - should return false - i.e deals with Null', () => {
+
+        let actual = Transaction.checkInputIsTransactionObject(null)
+
+        expect(actual).toBeFalse;
+
+    });
+
+    it('test 12 - should return false - i.e deals with blank/empty', () => {
+
+        let actual = Transaction.checkInputIsTransactionObject()
+
+        expect(actual).toBeFalse;
+
+    });
+
 })

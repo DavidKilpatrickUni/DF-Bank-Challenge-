@@ -126,6 +126,9 @@ describe('Account Tests - User Story 1', () => {
 
     });
 
+
+    // User input validation
+
     it('test 9 - should return true that input exists and is a String', () => {
 
         let actual = Account.checkInputOfAccountID(account)
