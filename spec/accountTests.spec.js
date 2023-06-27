@@ -116,5 +116,46 @@ describe('Account Tests - User Story 1', () => {
 
     });
 
+    it('test 9 - should return true that input exists and is a String', () => {
 
+        let actual = Account.checkInputOfAccountID(account)
+
+        expect(actual).toBeTrue;
+
+    });
+
+    it('test 10 - should return false that input exists', () => {
+
+        let actual = Account.checkInputOfAccountID()
+
+        expect(actual).toBeFalse;
+
+    });
+
+    it('test 11 - should return false that input is a String', () => {
+
+        let actual = Account.checkInputOfAccountID(346)
+
+        expect(actual).toBeFalse;
+
+    });
+
+
+    it('test 12 - should return false - i.e deals with Null', () => {
+
+        let actual = Account.checkInputOfAccountID(null)
+
+        expect(actual).toBeFalse;
+
+    });
+
+    // Test 13 - Not required here, but is good to check an account is an Account object if adding to an array of accounts or customers at a certain bank etc
+
+    it('test 13 - should return true that input is a Account object ', () => {
+
+        let actual = Account.checkInputIsAccountObject(account)
+
+        expect(actual).toBeTrue;
+
+    });
 })

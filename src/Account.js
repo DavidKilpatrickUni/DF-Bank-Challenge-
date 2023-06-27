@@ -10,6 +10,10 @@ class Account {
         this.#transactionList = [];
     }
 
+    static checkInputOfAccountID(input) {
+        return (input?.accountID && typeof input.accountID === 'string');
+    }
+
     getAccountID() {
         return this.#accountID;
     }
