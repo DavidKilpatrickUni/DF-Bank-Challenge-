@@ -1,17 +1,27 @@
 import Account from '../src/Account.js';
 
-class MockTransaction {
+class MockTransaction1 {
     getTransactionID = () => 'New Transaction1';
+}
+
+class MockTransaction2 {
+    getTransactionID = () => 'New Transaction2';
+}
+
+class MockTransaction3 {
+    getTransactionID = () => 'New Transaction3';
 }
 
 describe('Account Tests - User Story 1', () => {
 
     let account;
-    let transaction1;
+    let transaction1, transaction2, transaction3;
 
     beforeEach(() => {
         account = new Account('Test Account');
-        transaction1 = new MockTransaction();
+        transaction1 = new MockTransaction1();
+        transaction2 = new MockTransaction2();
+        transaction3 = new MockTransaction3();
     });
 
     it('test 1 - should create a new instance of an Account', () => {
@@ -76,6 +86,19 @@ describe('Account Tests - User Story 1', () => {
 
         //Assert
         expect(account.getTransactions()[0].getTransactionID()).toBe('New Transaction1');
+
+    });
+
+    it('test 7 - should return value of 3 after 3 mock transactions have been added to account', () => {
+        //Arrange
+
+        //Act
+        account.addTransaction(transaction1);
+        account.addTransaction(transaction2);
+        account.addTransaction(transaction3);
+
+        //Assert
+        expect(account.getTransactions().length).toBe(3);
 
     });
 
