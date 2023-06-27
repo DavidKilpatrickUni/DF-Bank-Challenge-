@@ -47,5 +47,16 @@ describe('Transaction Tests - User Story 2', () => {
         expect(depositSpy).toHaveBeenCalledWith(amount);
     });
 
+    it('test 3 - Check parameter (1000) is being stored as deposited amount', () => {
+        //Arrange
+        const amount = 1000;
+
+        //Act
+        transaction1.deposit(amount);
+
+        //Assert
+        expect(transaction1.getBalance).toBe(1000);
+    });
+
 
 })
