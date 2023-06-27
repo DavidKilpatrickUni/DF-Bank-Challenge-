@@ -30,6 +30,13 @@ describe('Account Tests - User Story 1', () => {
         transaction3 = new MockTransaction3();
     });
 
+    afterEach(() => {
+        account = undefined;
+        transaction1 = undefined;
+        transaction2 = undefined;
+        transaction3 = undefined;
+    });
+
     it('test 1 - should create a new instance of an Account', () => {
         //Arrange
 
@@ -211,6 +218,13 @@ describe('Account Tests - User Story 2', () => {
         transaction1 = new MockTransaction1();
         transaction2 = new MockTransaction2();
         transaction3 = new MockTransaction3();
+    });
+
+    afterEach(() => {
+        account = undefined;
+        transaction1 = undefined;
+        transaction2 = undefined;
+        transaction3 = undefined;
     });
 
     it('test 18 - should call accountDeposit method within the Account class ', () => {

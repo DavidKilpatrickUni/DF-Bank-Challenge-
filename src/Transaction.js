@@ -39,6 +39,14 @@ class Transaction {
         this.#amountDeposited = amount;
     }
 
+    getDate() {
+        return this.#date;
+    }
+
+    setDate(date) {
+        this.#date = date;
+    }
+
     deposit(amount) {
         this.setAccountBalancePlus(amount);
         this.setAmountDeposited(amount);
