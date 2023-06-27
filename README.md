@@ -66,11 +66,11 @@ So their money can be stored, tracked and recorded within the company
 
 -Objects;       -Properties;                          -Messages;                                    -Output;
                                                    
--Account;                                             -accountDeposit(@Transaction, @Number)
+-Account;                                             -accountDeposit(@Transaction, @Number)        -@void
              
                                             
 -Transaction    -usedAccount @Account;                -deposit(@number)                             -@void
-                -amountDeposited @Number;             -setAccountBalancePlus(@Number)
+                -amountDeposited @Number;             -setAccountBalancePlus(@Number)               -@void
                 -balance @Number;
                 -date @Date
 

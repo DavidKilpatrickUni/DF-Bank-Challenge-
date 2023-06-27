@@ -34,13 +34,19 @@ class Account {
         this.#balance = newBalance;
     }
 
-    addTransaction(transactionObject) {
-        this.#transactionList = [transactionObject, ...this.#transactionList]
+    makeTransaction(transactionObject) {
+        this.#transactionList = [transactionObject, ...this.#transactionList];
     }
 
     getTransactions() {
         return this.#transactionList;
     }
+
+    accountDeposit(transactionObject, amount) {
+        transactionObject.deposit(amount);
+        makeTransaction(transactionObject);
+    }
+
 
 }
 

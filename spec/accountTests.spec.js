@@ -35,10 +35,10 @@ describe('Account Tests - User Story 1', () => {
 
     it('test 2 - should call addTransaction method', () => {
         //Arrange
-        const addTransactionSpy = spyOn(account, 'addTransaction')
+        const addTransactionSpy = spyOn(account, 'makeTransaction')
 
         //Act
-        account.addTransaction();
+        account.makeTransaction();
 
         //Assert
         expect(addTransactionSpy).toHaveBeenCalled;
@@ -46,10 +46,10 @@ describe('Account Tests - User Story 1', () => {
 
     it('test 3 - should call addTransaction method with new transaction object', () => {
         //Arrange
-        const addTransactionSpy = spyOn(account, 'addTransaction')
+        const addTransactionSpy = spyOn(account, 'makeTransaction')
 
         //Act
-        account.addTransaction(transaction1);
+        account.makeTransaction(transaction1);
 
         //Assert
         expect(addTransactionSpy).toHaveBeenCalledOnceWith(transaction1);
@@ -71,7 +71,7 @@ describe('Account Tests - User Story 1', () => {
         //Arrange
 
         //Act
-        account.addTransaction(transaction1);
+        account.makeTransaction(transaction1);
 
         //Assert
         expect(account.getTransactions().length).toBe(1);
@@ -82,7 +82,7 @@ describe('Account Tests - User Story 1', () => {
         //Arrange
 
         //Act
-        account.addTransaction(transaction1);
+        account.makeTransaction(transaction1);
 
         //Assert
         expect(account.getTransactions()[0].getTransactionID()).toBe('New Transaction1');
@@ -93,9 +93,9 @@ describe('Account Tests - User Story 1', () => {
         //Arrange
 
         //Act
-        account.addTransaction(transaction1);
-        account.addTransaction(transaction2);
-        account.addTransaction(transaction3);
+        account.makeTransaction(transaction1);
+        account.makeTransaction(transaction2);
+        account.makeTransaction(transaction3);
 
         //Assert
         expect(account.getTransactions().length).toBe(3);
@@ -107,9 +107,9 @@ describe('Account Tests - User Story 1', () => {
         let testArray = [transaction1, transaction2, transaction3]
 
         //Act
-        account.addTransaction(transaction1);
-        account.addTransaction(transaction2);
-        account.addTransaction(transaction3);
+        account.makeTransaction(transaction1);
+        account.makeTransaction(transaction2);
+        account.makeTransaction(transaction3);
 
         //Assert
         expect(JSON.stringify(testArray)).toBe(JSON.stringify(account.getTransactions()));
