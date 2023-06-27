@@ -9,11 +9,13 @@ class MockTransaction1 {
 class MockTransaction2 {
 
     getTransactionID = () => 'New Transaction2';
+    deposit = amount => { };
 }
 
 class MockTransaction3 {
 
     getTransactionID = () => 'New Transaction3';
+    deposit = amount => { };
 }
 
 describe('Account Tests - User Story 1', () => {
@@ -245,5 +247,30 @@ describe('Account Tests - User Story 2', () => {
         //Assert
         expect(account.getTransactions().length).toBe(1);
     });
+
+    it('test 21 - should call Deposit method within the (Mock) Transaction class ', () => {
+        //Arrange
+        const depositSpy = spyOn(transaction1, 'deposit')
+        const amount = 1000;
+
+        //Act
+        account.accountDeposit(transaction1, amount);
+
+        //Assert
+        expect(depositSpy).toHaveBeenCalled;
+    });
+
+    it('test 22 - should call Deposit method within the (Mock) Transaction class with parameter', () => {
+        //Arrange
+        const depositSpy = spyOn(transaction1, 'deposit')
+        const amount = 1000;
+
+        //Act
+        account.accountDeposit(transaction1, amount);
+
+        //Assert
+        expect(depositSpy).toHaveBeenCalledWith(amount);
+    });
+
 
 })
