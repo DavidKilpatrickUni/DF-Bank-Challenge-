@@ -1,15 +1,15 @@
 class Transaction {
 
-    #transactionID;
+    #transactionID = 0;
     #usedAccount;
     #amountDeposited;
     #balance;
     #date;
 
 
-    constructor(transactionID) {
-        this.#transactionID = transactionID;
+    constructor(usedAccount) {
         this.#usedAccount = usedAccount;
+        this.#transactionID++;
         this.#amountDeposited;
         this.#balance = usedAccount.getBalance();
         this.#date = new Date();

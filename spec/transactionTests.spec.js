@@ -1,7 +1,7 @@
 import Transaction from '../src/Transaction.js';
 
 class MockAccount {
-
+    getBalance = () => 0;
 }
 
 describe('Transaction Tests - User Story 2', () => {
@@ -11,9 +11,9 @@ describe('Transaction Tests - User Story 2', () => {
 
     beforeEach(() => {
         account = new MockAccount('Test Account');
-        transaction1 = new Transaction();
-        transaction2 = new Transaction();
-        transaction3 = new Transaction();
+        transaction1 = new Transaction(account);
+        transaction2 = new Transaction(account);
+        transaction3 = new Transaction(account);
     });
 
     afterEach(() => {
@@ -33,6 +33,18 @@ describe('Transaction Tests - User Story 2', () => {
 
         //Assert
         expect(depositSpy).toHaveBeenCalled;
+    });
+
+    it('test 2 - should call deposit method with parameter', () => {
+        //Arrange
+        const depositSpy = spyOn(transaction1, 'deposit')
+        const amount = 1000;
+
+        //Act
+        transaction1.deposit(amount);
+
+        //Assert
+        expect(depositSpy).toHaveBeenCalledWith(amount);
     });
 
 
