@@ -231,26 +231,72 @@ describe('Transaction Tests - User Story 3', () => {
 
     it('test 15 - should call setAccountBalanceMinus method', () => {
         //Arrange
-        const withdrawSpy = spyOn(transaction1, 'setAccountBalanceMinus')
+        const setAccountBalanceMinusSpy = spyOn(transaction1, 'setAccountBalanceMinus')
         const amount = 1000;
 
         //Act
         transaction1.withdraw(amount);
 
         //Assert
-        expect(withdrawSpy).toHaveBeenCalled;
+        expect(setAccountBalanceMinusSpy).toHaveBeenCalled;
     });
 
     it('test 16 - should call setAccountBalanceMinus method with parameter', () => {
         //Arrange
-        const withdrawSpy = spyOn(transaction1, 'setAccountBalanceMinus')
+        const setAccountBalanceMinusSpy = spyOn(transaction1, 'setAccountBalanceMinus')
         const amount = 1000;
 
         //Act
         transaction1.withdraw(amount);
 
         //Assert
-        expect(withdrawSpy).toHaveBeenCalledWith(amount);
+        expect(setAccountBalanceMinusSpy).toHaveBeenCalledWith(amount);
+    });
+
+    it('test 17 - should call setAmountWithdrawn method', () => {
+        //Arrange
+        const setAmountWithdrawnSpy = spyOn(transaction1, 'setAmountWithdrawn')
+        const amount = 1000;
+
+        //Act
+        transaction1.withdraw(amount);
+
+        //Assert
+        expect(setAmountWithdrawnSpy).toHaveBeenCalled;
+    });
+
+    it('test 18 - should call setAmountWithdrawn method with parameter', () => {
+        //Arrange
+        const setAmountWithdrawnSpy = spyOn(transaction1, 'setAmountWithdrawn')
+        const amount = 1000;
+
+        //Act
+        transaction1.withdraw(amount);
+
+        //Assert
+        expect(setAmountWithdrawnSpy).toHaveBeenCalledWith(amount);
+    });
+
+    it('test 19 - Check parameter (1000) is being stored as withdrawn amount', () => {
+        //Arrange
+        const amount = 1000;
+
+        //Act
+        transaction1.withdraw(amount);
+
+        //Assert
+        expect(transaction1.getAmountWithdrawn()).toBe(1000);
+    });
+
+    it('test 20 - Check parameter (-1000) is being stored as balance for that period in time after transaction', () => {
+        //Arrange
+        const amount = 1000;
+
+        //Act
+        transaction1.withdraw(amount);
+
+        //Assert
+        expect(transaction1.getTransactionBalance()).toBe(-1000);
     });
 
 })

@@ -296,4 +296,62 @@ describe('Account Tests - User Story 2', () => {
         //Assert
         expect(account.getBalance()).toBe(1000);
     });
+
+
+
 })
+
+describe('Account Tests - User Story 3', () => {
+
+    let account;
+    let transaction1, transaction2, transaction3;
+
+    beforeEach(() => {
+        account = new Account('Test Account');
+        transaction1 = new MockTransaction1();
+        transaction2 = new MockTransaction2();
+        transaction3 = new MockTransaction3();
+    });
+
+    afterEach(() => {
+        account = undefined;
+        transaction1 = undefined;
+        transaction2 = undefined;
+        transaction3 = undefined;
+    });
+
+    it('test 24 - should call accountWith method within the Account class ', () => {
+        //Arrange
+        const accountWithdrawSpy = spyOn(account, 'accountWithdraw')
+        const amount = 1000;
+
+        //Act
+        account.accountWithdraw(transaction1, amount);
+
+        //Assert
+        expect(accountWithdrawSpy).toHaveBeenCalled;
+    });
+
+    it('test 25 - should call accountWith method within the Account class with parameters', () => {
+        //Arrange
+        const accountWithdrawSpy = spyOn(account, 'accountWithdraw')
+        const amount = 1000;
+
+        //Act
+        account.accountWithdraw(transaction1, amount);
+
+        //Assert
+        expect(accountWithdrawSpy).toHaveBeenCalledWith(transaction1, amount);
+    });
+
+    it('test 26 - should increase transactions list by 1', () => {
+        //Arrange
+        const amount = 1000;
+
+        //Act
+        account.accountWithdraw(transaction1, amount);
+
+        //Assert
+        expect(account.getTransactions().length).toBe(1);
+    });
+});
