@@ -51,18 +51,28 @@ So that we can do business through transactions
 
 ### Domain Model
 
--Objects;     -Properties;                            -Messages;                      -Output;
+-Objects;     -Properties;                            -Messages;                       -Output;
                                                    
--Account;     -accountID @Number                                         
-              -balance @Number
-              -listOfTransaction @Array[Transaction]; -makeTransaction(@Transaction)  -@void                 
+-Account;     -accountID @Number;                                         
+              -balance @Number;
+              -listOfTransaction @Array[Transaction]; -makeTransaction(@Transaction);  -@void;                 
                 
--Transaction
+-Transaction;
 
 ### User Story 2
 As a bank company
 I want customers to be able to make deposits into their account
 So their money can be stored, tracked and recorded within the company
+
+-Objects;       -Properties;                          -Messages;                                    -Output;
+                                                   
+-Account;                                             -accountDeposit(@Transaction, @Number)
+             
+                                            
+-Transaction    -usedAccount @Account;                -deposit(@number)                             -@void
+                -amountDeposited @Number;             -setAccountBalancePlus(@Number)
+                -balance @Number;
+                -date @Date
 
 ### User Story 3
 As a bank company 

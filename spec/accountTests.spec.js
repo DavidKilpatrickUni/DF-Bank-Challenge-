@@ -185,11 +185,37 @@ describe('Account Tests - User Story 1', () => {
 
     });
 
-    it('test 16 - should return false - i.e deals with blank/empty', () => {
+    it('test 17 - should return false - i.e deals with blank/empty', () => {
 
         let actual = Account.checkInputIsAccountObject()
 
         expect(actual).toBeFalse;
 
     });
+
+})
+
+describe('Account Tests - User Story 2', () => {
+
+    let account;
+    let transaction1, transaction2, transaction3;
+
+    beforeEach(() => {
+        account = new Account('Test Account');
+        transaction1 = new MockTransaction1();
+        transaction2 = new MockTransaction2();
+        transaction3 = new MockTransaction3();
+    });
+
+    it('test 18 - should call deposit method within the (mock)Transaction class ', () => {
+        //Arrange
+        const depositSpy = spyOn(account, 'accountDeposit')
+        const amount = 1000;
+        //Act
+        account.accountDeposit(transaction1, amount);
+
+        //Assert
+        expect(depositSpy).toHaveBeenCalled;
+    });
+
 })
