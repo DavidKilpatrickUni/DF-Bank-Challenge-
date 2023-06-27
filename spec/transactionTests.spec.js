@@ -50,7 +50,55 @@ describe('Transaction Tests - User Story 2', () => {
         expect(depositSpy).toHaveBeenCalledWith(amount);
     });
 
-    it('test 3 - Check parameter (1000) is being stored as deposited amount', () => {
+    it('test 3 - should call setAmountDeposited method', () => {
+        //Arrange
+        const setAmountDepositedSpy = spyOn(transaction1, 'setAmountDeposited')
+        const amount = 1000;
+
+        //Act
+        transaction1.deposit(amount);
+
+        //Assert
+        expect(setAmountDepositedSpy).toHaveBeenCalled;
+    });
+
+    it('test 4 - should call setAmountDeposited method with parameter', () => {
+        //Arrange
+        const setAmountDepositedSpy = spyOn(transaction1, 'setAmountDeposited')
+        const amount = 1000;
+
+        //Act
+        transaction1.deposit(amount);
+
+        //Assert
+        expect(setAmountDepositedSpy).toHaveBeenCalledWith(amount);
+    });
+
+    it('test 5 - should call  setAccountBalancePlus method', () => {
+        //Arrange
+        const setAccountBalancePlusSpy = spyOn(transaction1, 'setAccountBalancePlus')
+        const amount = 1000;
+
+        //Act
+        transaction1.deposit(amount);
+
+        //Assert
+        expect(setAccountBalancePlusSpy).toHaveBeenCalled;
+    });
+
+    it('test 6 - should call  setAccountBalancePlus method with parameter', () => {
+        //Arrange
+        const setAccountBalancePlusSpy = spyOn(transaction1, 'setAccountBalancePlus')
+        const amount = 1000;
+
+        //Act
+        transaction1.deposit(amount);
+
+        //Assert
+        expect(setAccountBalancePlusSpy).toHaveBeenCalledWith(amount);
+    });
+
+    it('test 7 - Check parameter (1000) is being stored as deposited amount', () => {
         //Arrange
         const amount = 1000;
 
@@ -59,6 +107,17 @@ describe('Transaction Tests - User Story 2', () => {
 
         //Assert
         expect(transaction1.getAmountDeposited()).toBe(1000);
+    });
+
+    it('test 8 - Check parameter (1000) is being stored as balance for that period in time after transaction', () => {
+        //Arrange
+        const amount = 1000;
+
+        //Act
+        transaction1.deposit(amount);
+
+        //Assert
+        expect(transaction1.getTransactionBalance()).toBe(1000);
     });
 
 
