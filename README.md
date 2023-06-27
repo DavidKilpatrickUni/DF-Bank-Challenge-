@@ -41,3 +41,80 @@ date       || credit  || debit  || balance
 - [ ] Can you format the console output?  Credited values should be GREEN and debited values should be RED.  The balance should be GREEN if positive and RED if negative
 
 You may find this link useful [Output to the command line using NodeJS](https://nodejs.dev/en/learn/output-to-the-command-line-using-nodejs/) - check the formatting section (and this links out to a GitHub doc on the [ANSI color codes](https://gist.github.com/iamnewton/8754917))
+
+### Acceptance 
+
+### User Story 1
+As a bank company
+I want to be able to have customers have accounts
+So that we can do business through transactions
+
+### Domain Model
+
+-Objects;     -Properties;                            -Messages;                      -Output;
+                                                   
+-Account;     -accountID @Number                                         
+              -balance @Number
+              -listOfTransaction @Array[Transaction]; -makeTransaction(@Transaction)  -@void                 
+                
+-Transaction
+
+### User Story 2
+As a bank company
+I want customers to be able to make deposits into their account
+So their money can be stored, tracked and recorded within the company
+
+### User Story 3
+As a bank company 
+I want customers to be able to withdraw money from their accounts
+So customers can retrieve their money whilst keeping the companies records correct
+
+### User Story 4
+As a bank company
+I want printable bank statements of accounts
+So customers can see transfers (deposit or withdraw), date of said transfers and the account balance
+
+
+### Extended 
+
+### User Story 5
+As a bank company
+I want printable bank statements of accounts to include green text for credited values 
+So customers can see more clearly deposit transaction type
+
+### User Story 6
+As a bank company
+I want printable bank statements of accounts to include red text for debited values 
+So customers can see more clearly withdraw transaction type
+
+### User Story 7
+As a bank company
+I want printable bank statements of accounts to include green text for positive balance values
+So customers can see more clearly balance condition
+
+### User Story 8
+As a bank company
+I want printable bank statements of accounts to include red text for negative balance values
+So customers can see more clearly balance condition
+
+
+
+
+
+
+
+
+
+
+
+
+-Objects;     -Properties;                            -Messages;                      -Output;
+
+-Transaction; -transactionID @String;                 -transactionDeposit();   
+              -dateOfTransaction @Date;
+                                                      
+
+-Account;     -listOfTransaction @Array[Transaction]; -accountDeposit();                       -@Void;
+              
+              
+              -balance @decimal                       
