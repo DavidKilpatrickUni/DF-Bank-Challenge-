@@ -207,15 +207,39 @@ describe('Account Tests - User Story 2', () => {
         transaction3 = new MockTransaction3();
     });
 
-    it('test 18 - should call deposit method within the (mock)Transaction class ', () => {
+    it('test 18 - should call accountDeposit method within the Account class ', () => {
         //Arrange
-        const depositSpy = spyOn(account, 'accountDeposit')
+        const accountDepositSpy = spyOn(account, 'accountDeposit')
         const amount = 1000;
+
         //Act
         account.accountDeposit(transaction1, amount);
 
         //Assert
-        expect(depositSpy).toHaveBeenCalled;
+        expect(accountDepositSpy).toHaveBeenCalled;
+    });
+
+    it('test 19 - should call accountDeposit method within the Account class with parameters', () => {
+        //Arrange
+        const accountDepositSpy = spyOn(account, 'accountDeposit')
+        const amount = 1000;
+
+        //Act
+        account.accountDeposit(transaction1, amount);
+
+        //Assert
+        expect(accountDepositSpy).toHaveBeenCalledWith(transaction1, amount);
+    });
+
+    it('test 20 - should increase transactions list by 1', () => {
+        //Arrange
+        const amount = 1000;
+
+        //Act
+        account.accountDeposit(transaction1, amount);
+
+        //Assert
+        expect(account.getTransactions().length).toBe(1);
     });
 
 })
