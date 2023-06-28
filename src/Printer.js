@@ -11,9 +11,9 @@ class Printer {
         function displayTransactions(transaction) {
 
             let date = transaction.getDate();
-            let credit = transaction.getAmountDeposited();
-            let debit = transaction.getAmountWithdrawn();
-            let balance = transaction.getTransactionBalance();
+            let credit = transaction.getAmountDeposited().toFixed(2);
+            let debit = transaction.getAmountWithdrawn().toFixed(2);
+            let balance = transaction.getTransactionBalance().toFixed(2);
 
             console.log(`${date} || ${credit}|| ${debit}|| ${balance}`)
 
