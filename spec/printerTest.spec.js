@@ -30,12 +30,14 @@ describe('Printer Tests - User Story 4', () => {
 
     let account;
     let transaction1, transaction2, transaction3;
+    let transactionArray;
 
     beforeEach(() => {
         account = new MockAccount();
         transaction1 = new MockTransaction1();
         transaction2 = new MockTransaction2();
         transaction3 = new MockTransaction3();
+        transactionArray = [transaction1, transaction2, transaction3];
     });
 
     afterEach(() => {
@@ -43,6 +45,7 @@ describe('Printer Tests - User Story 4', () => {
         transaction1 = undefined;
         transaction2 = undefined;
         transaction3 = undefined;
+        transactionArray = undefined;
     });
 
 
@@ -78,6 +81,20 @@ describe('Printer Tests - User Story 4', () => {
         //Assert
         expect(displayTransactionsSpy).toHaveBeenCalledWith(transaction1);
     });
+
+    it('test 33 - should call static Printer method called displayTransactions with parameter', () => {
+        //Arrange
+        const displayTransactionsSpy = spyOn(Printer, 'displayTransactions')
+
+        //Act
+        Printer.displayTransactions(transactionArray);
+
+        //Assert
+        expect(displayTransactionsSpy).toHaveBeenCalledWith(transactionArray);
+    });
+
+
+
 
 })
 
