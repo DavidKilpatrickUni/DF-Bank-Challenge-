@@ -60,7 +60,7 @@ describe('Printer Tests - User Story 4', () => {
         expect(displayTransactionsSpy).toHaveBeenCalled;
     });
 
-    // test doesnt work after adding the foreach to display the array contents. Strange as other tests checking same thing with parameter check or call count seem to work
+    // test does not work after adding the foreach to display the array contents. Strange as other tests checking same thing with parameter check or call count seem to work
 
     // it('test 2 - should interact with console.log when displayTransactions called', () => {
     //     //Arrange
@@ -132,7 +132,7 @@ describe('Printer Tests - User Story 4', () => {
 
         //Assert
 
-        expect(consoleSpy).toHaveBeenCalledTimes(4);
+        expect(consoleSpy).toHaveBeenCalledTimes(transactionArray.length + 1); // including 1 for the header
 
     });
 
