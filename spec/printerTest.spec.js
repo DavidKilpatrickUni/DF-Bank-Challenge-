@@ -136,7 +136,18 @@ describe('Printer Tests - User Story 4', () => {
 
     });
 
+    it('test 8 - should call creditColor method when displayTransactions called', () => {
+        //Arrange
+        const creditColorSpy = spyOn(Printer, 'creditColor')
 
+        //Act
+        Printer.displayTransactions(transactionArray);
+
+        //Assert
+
+        expect(creditColorSpy).toHaveBeenCalled;
+
+    });
 
 
 

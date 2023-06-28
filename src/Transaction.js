@@ -8,7 +8,7 @@ class Transaction {
     #date;
 
 
-    constructor(balance, date = new Date().toLocaleDateString('en-UK')) {  // Now pass just balance of account instead of whole account
+    constructor(balance, date = new Date().toLocaleDateString('en-UK')) {  // Now pass just balance of account instead of whole account + added date at latter stage
         //this.#usedAccount = usedAccount;    Details about the account not required
         this.#transactionID++;
         this.#amountDeposited;
@@ -73,7 +73,7 @@ class Transaction {
         this.setAccountBalancePlus(amount);
         this.setAmountDeposited(amount);
         // this.#usedAccount.setBalance(this.#usedAccount.getBalance() + amount); 
-        // Discussed this. Even though transaction isnt made, balance can be changed in Account class. Perhaps some sort of check in account that transaction was success would solve my overthinking issue
+        // Discussed this. Even though transaction is not made, balance can be changed in Account class. Perhaps some sort of check in account that transaction was success would solve my overthinking issue
     }
 
     withdraw(amount) {

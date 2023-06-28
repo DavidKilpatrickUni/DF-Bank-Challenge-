@@ -112,6 +112,17 @@ As a bank company
 I want printable bank statements of accounts to include green text for credited values 
 So customers can see more clearly deposit transaction type
 
+// Instead of hard coding the color codes within the console.log statement, to be able to test, I will make a method call return a color code string and compare its output to expected.
+// Color will be based on the input from the value held within the current instances AmountDeposited property. A value not '' (blank) will be an actual deposit so console will 
+// display this in green
+
+-Objects;       -Properties;                          -Messages;                                    -Output;
+                                                   
+-Printer;                                             -creditColor(@String)                         -@String
+             
+                                            
+
+
 ### User Story 6
 As a bank company
 I want printable bank statements of accounts to include red text for debited values 
