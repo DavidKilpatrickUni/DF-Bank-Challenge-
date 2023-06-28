@@ -8,14 +8,14 @@ class Transaction {
     #date;
 
 
-    constructor(balance) {  // Now pass just balance of account instead of whole account
+    constructor(balance, date = new Date().toLocaleDateString('en-UK')) {  // Now pass just balance of account instead of whole account
         //this.#usedAccount = usedAccount;    Details about the account not required
         this.#transactionID++;
         this.#amountDeposited;
         this.#amountWithdrawn;
         //this.#balance = usedAccount.getBalance();   Balance of Account not required
         this.#balance = balance;
-        this.#date = new Date().toLocaleDateString('en-UK');
+        this.#date = date;
     }
 
     static checkInputIsTransactionObject(input) {

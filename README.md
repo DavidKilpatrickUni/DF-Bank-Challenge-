@@ -101,7 +101,7 @@ So customers can see transfers (deposit or withdraw), date of said transfers and
 -Printer;                                             -printTransactions(@Array[Transaction])       -console.log(@String)
              
                                             
--Transaction    -date Date();                         -dateFormat(@Date)                            -@Date
+-Transaction    -date Date();                                                     
                                                       
 
 
