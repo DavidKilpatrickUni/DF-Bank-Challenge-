@@ -93,6 +93,48 @@ describe('Printer Tests - User Story 4', () => {
         expect(displayTransactionsSpy).toHaveBeenCalledWith(transactionArray);
     });
 
+    // Test out of date - was used to make sure dataflow was correct before proper message was being displayed
+
+    // it('test 34 - should interact with console.log when displayTransactions called (base count without proper message)', () => {
+    //     //Arrange
+    //     const consoleSpy = spyOn(console, 'log')
+
+    //     //Act
+    //     Printer.displayTransactions(transactionArray);
+
+    //     //Assert
+
+    //     expect(consoleSpy).toHaveBeenCalledTimes(3);
+
+    // });
+
+    it('test 35 - should interact with console.log when displayTransactions called with correct parameter each time', () => {
+        //Arrange
+        const consoleSpy = spyOn(console, 'log')
+
+        //Act
+        Printer.displayTransactions(transactionArray);
+
+        //Assert
+        for (let loop = 0; loop < transactionArray; loop++) {
+            expect(consoleSpy).toHaveBeenCalledWith(transactionArray[loop]);
+        }
+    });
+
+    it('test 36 - should interact with console.log when displayTransactions called (4 times - 3 array values and 1 header)', () => {
+        //Arrange
+        const consoleSpy = spyOn(console, 'log')
+
+        //Act
+        Printer.displayTransactions(transactionArray);
+
+        //Assert
+
+        expect(consoleSpy).toHaveBeenCalledTimes(4);
+
+    });
+
+
 
 
 
