@@ -3,7 +3,7 @@ class Printer {
     static displayTransactions(transactionList) {
 
 
-        console.log('date     || credit  || debit  || balance')
+        console.log('date       || credit  || debit  || balance')
 
         transactionList.forEach(displayTransactions)
 
@@ -15,7 +15,7 @@ class Printer {
             let debit = (transaction.getAmountWithdrawn() != 0) ? transaction.getAmountWithdrawn().toFixed(2) : '';
             let balance = transaction.getTransactionBalance().toFixed(2);
 
-            console.log(`12/12/12 || ${credit.padEnd(8)}|| ${debit.padEnd(7)}|| ${balance}`)
+            console.log(`${date} || ${credit.padEnd(8)}|| ${debit.padEnd(7)}|| ${balance}`)
 
         }
 

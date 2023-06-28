@@ -15,7 +15,7 @@ class Transaction {
         this.#amountWithdrawn;
         //this.#balance = usedAccount.getBalance();   Balance of Account not required
         this.#balance = balance;
-        this.#date = new Date();
+        this.#date = new Date().toLocaleDateString('en-UK');
     }
 
     static checkInputIsTransactionObject(input) {
