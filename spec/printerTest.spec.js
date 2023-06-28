@@ -24,6 +24,17 @@ class MockTransaction3 {
 
 describe('Printer Tests - User Story 4', () => {
 
+    it('test 30 - should call static Printer method called displayTransactions', () => {
+        //Arrange
+        const displayTransactionsSpy = spyOn(Printer, 'displayTransactions')
+        const amount = 1000;
+
+        //Act
+        Printer.displayTransactions();
+
+        //Assert
+        expect(displayTransactionsSpy).toHaveBeenCalled;
+    });
 
 })
 
