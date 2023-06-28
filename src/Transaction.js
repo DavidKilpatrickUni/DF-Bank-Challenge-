@@ -49,6 +49,7 @@ class Transaction {
 
     setAmountDeposited(amount) {
         this.#amountDeposited = amount;
+        this.#amountWithdrawn = 0;
     }
 
     getAmountWithdrawn() {
@@ -57,6 +58,7 @@ class Transaction {
 
     setAmountWithdrawn(amount) {
         this.#amountWithdrawn = amount;
+        this.#amountDeposited = 0;
     }
 
     getDate() {

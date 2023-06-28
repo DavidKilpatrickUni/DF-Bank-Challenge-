@@ -4,8 +4,8 @@ import Transaction from './Transaction.js';
 
 const account = new Account('my account');
 
+account.accountDeposit(new Transaction(account), 1000.00)
+account.accountDeposit(new Transaction(account), 2000.00)
 account.accountWithdraw(new Transaction(account), 500.00)
-account.accountWithdraw(new Transaction(account), 2500.00)
-account.accountWithdraw(new Transaction(account), 1000.00)
 
 Printer.displayTransactions(account.getTransactions());
