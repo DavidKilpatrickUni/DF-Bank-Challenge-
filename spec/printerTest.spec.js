@@ -488,7 +488,7 @@ describe('Printer Tests - User Story 5', () => {
         Printer.creditColor(transactionArrayOneElementPadding);
 
         //Assert
-        expect(assignCreditColorSpy).toHaveBeenCalledWith(transactionPadding1); // The first element within the array
+        expect(assignCreditColorSpy).toHaveBeenCalledWith(transactionArrayOneElementPadding[0]); // The first element within the array
     });
 
     it('test 5 - should call assignCreditColor() method ', () => {
@@ -657,7 +657,7 @@ describe('Printer Tests - User Story 6', () => {
         //Arrange
         const assignDebitColorSpy = spyOn(Printer, 'assignDebitColor')
         //Act
-        Printer.debitColor();
+        Printer.debitColor(transactionArrayOneElementPadding);
 
         //Assert
         expect(assignDebitColorSpy).toHaveBeenCalled;
@@ -673,25 +673,25 @@ describe('Printer Tests - User Story 6', () => {
         expect(assignDebitColorSpy).toHaveBeenCalledWith(transactionArrayOneElementPadding[0]); // The first element within the array
     });
 
-    // it('test 5 - should call assignCreditColor() method ', () => {
-    //     //Arrange
-    //     const assignCreditColorSpy = spyOn(Printer, 'assignCreditColor')
-    //     //Act
-    //     Printer.assignCreditColor();
+    it('test 5 - should call assignDebitColor() method ', () => {
+        //Arrange
+        const assignDebitColorSpy = spyOn(Printer, 'assignDebitColor')
+        //Act
+        Printer.assignDebitColor();
 
-    //     //Assert
-    //     expect(assignCreditColorSpy).toHaveBeenCalled;
-    // });
+        //Assert
+        expect(assignDebitColorSpy).toHaveBeenCalled;
+    });
 
-    // it('test 6 - should call assignCreditColor() method with parameter', () => {
-    //     //Arrange
-    //     const assignCreditColorSpy = spyOn(Printer, 'assignCreditColor')
-    //     //Act
-    //     Printer.assignCreditColor(transactionPadding1); // single element at a time since this method is called from another method running a loop
+    it('test 6 - should call assignDebitColor() method with parameter', () => {
+        //Arrange
+        const assignDebitColorSpy = spyOn(Printer, 'assignDebitColor')
+        //Act
+        Printer.assignDebitColor(transactionPadding1); // single element at a time since this method is called from another method running a loop
 
-    //     //Assert
-    //     expect(assignCreditColorSpy).toHaveBeenCalledWith(transactionPadding1);
-    // });
+        //Assert
+        expect(assignDebitColorSpy).toHaveBeenCalledWith(transactionPadding1);
+    });
 
     // it('test 7 - should call colorGreen() method ', () => {
     //     //Arrange
