@@ -1,6 +1,6 @@
 class Transaction {
 
-    #transactionID = 0;
+    #transactionID;
     #amountDeposited;
     #amountWithdrawn;
     #balance;
@@ -8,7 +8,7 @@ class Transaction {
 
 
     constructor(balance, date = new Date().toLocaleDateString('en-UK')) {
-        this.#transactionID++;
+        this.#transactionID;
         this.#amountDeposited;
         this.#amountWithdrawn;
         this.#balance = balance;
