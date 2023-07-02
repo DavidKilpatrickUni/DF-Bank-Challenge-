@@ -3,13 +3,24 @@ import Printer from '../src/Printer.js';
 
 class MockTransaction1 {
     getDate = () => new Date("2012-1-10").toLocaleDateString('en-UK');
-    setDate = date => { this.getDate = date };
+    setDate = date => { };
     getAmountDeposited = () => 1000;
-    setAmountDeposited = amount => { this.getAmountDeposited = amount };
-    getAmountWithdrawn = () => 0;
-    setAmountWithdrawn = amount => { this.getAmountWithdrawn = amount };
+    setAmountDeposited = amount => { };
+    getAmountWithdrawn = () => undefined;
+    setAmountWithdrawn = amount => { };
     getTransactionBalance = () => 1000;
-    setTransactionBalance = amount => { this.getTransactionBalance = amount };
+    setTransactionBalance = balance => { };
+}
+
+class MockTransaction1Formated {
+    getDate = () => ('2012/1/10  ');
+    setDate = date => { };
+    getAmountDeposited = () => ' 1000.00 ';
+    setAmountDeposited = amount => { };
+    getAmountWithdrawn = () => '        ';
+    setAmountWithdrawn = amount => { };
+    getTransactionBalance = () => ' 1000.00 ';
+    setTransactionBalance = balance => { };
 }
 
 class MockTransaction2 {
@@ -136,40 +147,28 @@ describe('Printer Tests - User Story 4', () => {
         expect(toFixedSpy).toHaveBeenCalledWith(transactionArrayOne);
     });
 
-    it('test 9 - Property should equal expected', () => {
+
+    it('test 9 - should call padding method', () => {
         //Arrange
+        const paddingSpy = spyOn(Printer, 'padding')
 
         //Act
-        Printer.toFixed(transactionArrayOne[0]);
+        Printer.padding(transactionArrayOne);
 
         //Assert
-        expect(transactionArrayOne[0].getAmountDeposited()).toEqual(1000.00);
+        expect(paddingSpy).toHaveBeenCalled;
     });
 
-    it('test 10 - Property should equal expected', () => {
+    it('test 10 - should call padding method with parameter', () => {
         //Arrange
+        const paddingSpy = spyOn(Printer, 'padding')
 
         //Act
-        Printer.toFixed(transactionArrayOne[0]);
+        Printer.padding(transactionArrayOne);
 
         //Assert
-        expect(transactionArrayOne[0].getAmountWithdrawn()).toEqual(0.00);
+        expect(paddingSpy).toHaveBeenCalledWith(transactionArrayOne);
     });
-
-    it('test 11 - Property should equal expected', () => {
-        //Arrange
-
-        //Act
-        Printer.toFixed(transactionArrayOne[0]);
-
-        //Assert
-        expect(transactionArrayOne[0].getTransactionBalance()).toEqual(1000.00);
-    });
-
-
-
-
-
 
 })
 

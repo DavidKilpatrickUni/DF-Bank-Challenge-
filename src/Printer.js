@@ -22,8 +22,8 @@ class Printer {
     }
 
     static toFixed(transactionList) {
-        let max = transactionList.length
-        for (let loop = 0; max; loop++) {
+
+        for (let loop = 0; loop < transactionList.length; loop++) {
             (transactionList[loop].getAmountDeposited() != undefined) ? transactionList[loop].setAmountDeposited(transactionList[loop].getAmountDeposited().toFixed(2)) : transactionList[loop].setAmountDeposited('');
             (transactionList[loop].getAmountWithdrawn() != undefined) ? transactionList[loop].setAmountWithdrawn(transactionList[loop].getAmountWithdrawn().toFixed(2)) : transactionList[loop].setAmountWithdrawn('');
             transactionList[loop].setTransactionBalance(transactionList[loop].getTransactionBalance().toFixed(2));
@@ -37,25 +37,26 @@ class Printer {
     }
 
     static padding(transactionList) {
-        transactionList.forEach((transaction) => {
-            transaction.setDate(transaction.getDate().padEnd(11));
-            transaction.setAmountDeposited(transaction.getAmountDeposited().padStart(8).padEnd(9));
-            transaction.setAmountWithdrawn(transaction.getAmountWithdrawn().padStart(7).padEnd(8));
-            transaction.setTransactionBalance(transaction.getTransactionBalance().padStart(8).padEnd(9));
-        })
+
+        for (let loop = 0; loop < transactionList.length; loop++) {
+            transactionList[loop].setDate(transactionList[loop].getDate().padEnd(11));
+            transactionList[loop].setAmountDeposited(transactionList[loop].getAmountDeposited().padStart(8).padEnd(9));
+            transactionList[loop].setAmountWithdrawn(transactionList[loop].getAmountWithdrawn().padStart(7).padEnd(8));
+            transactionList[loop].setTransactionBalance(transactionList[loop].getTransactionBalance().padStart(8).padEnd(9));
+        }
+
+        // transactionList.forEach((transaction) => {
+        //     transaction.setDate(transaction.getDate().padEnd(11));
+        //     transaction.setAmountDeposited(transaction.getAmountDeposited().padStart(8).padEnd(9));
+        //     transaction.setAmountWithdrawn(transaction.getAmountWithdrawn().padStart(7).padEnd(8));
+        //     transaction.setTransactionBalance(transaction.getTransactionBalance().padStart(8).padEnd(9));
+        // })
     }
 
     static getHeader() {
         console.log('date       || credit  || debit  || balance');
     }
 
-    static colorGreen() {
-        return `\x1b[0;32m`;
-    }
-
-    static resetColor() {
-        return `\x1b[0m`;
-    }
 
 }
 export default Printer;
