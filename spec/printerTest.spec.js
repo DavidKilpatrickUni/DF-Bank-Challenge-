@@ -22,7 +22,7 @@ class MockTransactionFixed1 {
 
     date = "10/01/2012";
     amountDeposited = '1000.00';
-    amountWithdrawn = '0.00';
+    amountWithdrawn = '';
     balance = '1000.00';
 
     getDate = () => this.date;
@@ -39,7 +39,7 @@ class MockTransactionPadding1 {
 
     date = "10/01/2012 ";
     amountDeposited = ' 1000.00 ';
-    amountWithdrawn = '  0.00';
+    amountWithdrawn = '      ';
     balance = ' 1000.00 ';
 
     getDate = () => this.date;
@@ -52,35 +52,75 @@ class MockTransactionPadding1 {
     setTransactionBalance = amount => { this.balance = amount };
 }
 
+class MockTransaction2 {
 
+    date = new Date("2012-1-13").toLocaleDateString('en-UK');
+    amountDeposited = 2000;
+    amountWithdrawn = undefined;
+    balance = 3000;
+
+    getDate = () => this.date;
+    setDate = date => { this.date = date };
+    getAmountDeposited = () => this.amountDeposited;
+    setAmountDeposited = amount => { this.amountDeposited = amount };
+    getAmountWithdrawn = () => this.amountWithdrawn;
+    setAmountWithdrawn = amount => { this.amountWithdrawn = amount };
+    getTransactionBalance = () => this.balance;
+    setTransactionBalance = amount => { this.balance = amount };
+}
+
+class MockTransaction3 {
+
+    date = new Date("2012-1-14").toLocaleDateString('en-UK');
+    amountDeposited = undefined;
+    amountWithdrawn = 500;
+    balance = 2500;
+
+    getDate = () => this.date;
+    setDate = date => { this.date = date };
+    getAmountDeposited = () => this.amountDeposited;
+    setAmountDeposited = amount => { this.amountDeposited = amount };
+    getAmountWithdrawn = () => this.amountWithdrawn;
+    setAmountWithdrawn = amount => { this.amountWithdrawn = amount };
+    getTransactionBalance = () => this.balance;
+    setTransactionBalance = amount => { this.balance = amount };
+}
 
 
 describe('Printer Tests - User Story 4', () => {
 
 
-    let transaction1;
+    let transaction1, transaction2, transaction3;
     let transactionFixed1;
     let transactionPadding1;
     let transactionArrayOneElement;
     let transactionArrayOneElementFixed;
     let transactionArrayOneElementPadding;
 
+    let transactionArrayMultiElement
+
     beforeEach(() => {
         transaction1 = new MockTransaction1();
+        transaction2 = new MockTransaction2();
+        transaction3 = new MockTransaction3();
         transactionFixed1 = new MockTransactionFixed1();
         transactionPadding1 = new MockTransactionPadding1();
         transactionArrayOneElement = [transaction1]
         transactionArrayOneElementFixed = [transactionFixed1]
         transactionArrayOneElementPadding = [transactionPadding1]
+
+        transactionArrayMultiElement = [transaction1, transaction2, transaction3]
     });
 
     afterEach(() => {
-        transaction1 = undefined;
+        transaction1, transaction2, transaction3 = undefined;
         transactionFixed1 = undefined;
         transactionPadding1 = undefined;
         transactionArrayOneElement = undefined;
         transactionArrayOneElementFixed = undefined;
         transactionArrayOneElementPadding = undefined;
+
+        transactionArrayMultiElement = undefined;
 
     });
 
@@ -149,6 +189,17 @@ describe('Printer Tests - User Story 4', () => {
 
         //Assert
         expect(displayTransactionsSpy).toHaveBeenCalled();
+    });
+
+    it('test 6.1 - should call displayTransactions method with parameter ', () => {
+        //Arrange
+        const displayTransactionsSpy = spyOn(Printer, 'displayTransactions')
+
+        //Act
+        Printer.displayTransactions(transactionArrayOneElement);
+
+        //Assert
+        expect(displayTransactionsSpy).toHaveBeenCalledWith(transactionArrayOneElement);
     });
 
     it('test 7 - should call toFixed method', () => {
@@ -253,7 +304,7 @@ describe('Printer Tests - User Story 4', () => {
         Printer.padding(transactionArrayOneElementFixed);
 
         //Assert
-        expect(transactionArrayOneElementFixed[0].getAmountWithdrawn()).toBe('   0.00 '); // padding 7 and 8
+        expect(transactionArrayOneElementFixed[0].getAmountWithdrawn()).toBe('        '); // padding 7 and 8
     });
 
     it('test 17 - should change balance property to expected after padding', () => {
@@ -299,21 +350,10 @@ describe('Printer Tests - User Story 4', () => {
         expect(consoleSpy).toHaveBeenCalled;
     });
 
-    it('test 21 - should call console.log method as part of displayTransactions() expected number of times', () => {
+    it('test 21 - should call console.log method with parameter as part of displayTransactions()', () => {
         //Arrange
         const consoleSpy = spyOn(console, 'log')
-
-        //Act
-        Printer.displayTransactions(transactionArrayOneElementPadding);
-
-        //Assert
-        expect(consoleSpy).toHaveBeenCalled;
-    });
-
-    it('test 22 - should call console.log method with parameter as part of displayTransactions()', () => {
-        //Arrange
-        const consoleSpy = spyOn(console, 'log')
-        const consoleOutput = '10/01/2012 || 1000.00 ||  0.00|| 1000.00 '
+        const consoleOutput = '10/01/2012 || 1000.00 ||      || 1000.00 '
         //Act
         Printer.displayTransactions(transactionArrayOneElementPadding);
 
@@ -321,5 +361,101 @@ describe('Printer Tests - User Story 4', () => {
         expect(consoleSpy).toHaveBeenCalledWith(consoleOutput);
     });
 
+    it('test 24 - should call getHeader() method', () => {
+        //Arrange
+        const getHeaderSpy = spyOn(Printer, 'getHeader')
+        //Act
+        Printer.getHeader();
+
+        //Assert
+        expect(getHeaderSpy).toHaveBeenCalled;
+    });
+
+    it('test 25 - should call console.log as part of getHeader() method', () => {
+        //Arrange
+        const consoleSpy = spyOn(console, 'log')
+        //Act
+        Printer.getHeader();
+
+        //Assert
+        expect(consoleSpy).toHaveBeenCalled;
+    });
+
+    it('test 25 - should call console.log as part of getHeader() method', () => {
+        //Arrange
+        const consoleSpy = spyOn(console, 'log')
+        const expectedHeader = 'date       || credit  || debit  || balance';
+        //Act
+        Printer.getHeader();
+
+        //Assert
+        expect(consoleSpy).toHaveBeenCalledWith(expectedHeader);
+    });
+
+    it('test 26 - should call console.log method with parameter twice in total when following whole formatting process i.e 1 header and 1 transaction', () => {
+        //Arrange
+        const consoleSpy = spyOn(console, 'log')
+        //Act
+        Printer.printTransactions(transactionArrayOneElement);
+
+        //Assert
+        expect(consoleSpy).toHaveBeenCalledTimes(transactionArrayOneElement.length + 1);
+    });
+
+    it('test 27 - should call console.log method with parameter Quarce in total when following whole formatting process i.e 1 header and 3 transactions', () => {
+        //Arrange
+        const consoleSpy = spyOn(console, 'log')
+        //Act
+        Printer.printTransactions(transactionArrayMultiElement);
+
+        //Assert
+        expect(consoleSpy).toHaveBeenCalledTimes(transactionArrayMultiElement.length + 1);
+    });
+
+
+
+
+
+
+
 })
+
+describe('Printer Tests - User Story 5', () => {
+
+
+    let transaction1, transaction2, transaction3;
+    let transactionFixed1;
+    let transactionPadding1;
+    let transactionArrayOneElement;
+    let transactionArrayOneElementFixed;
+    let transactionArrayOneElementPadding;
+
+    let transactionArrayMultiElement
+
+    beforeEach(() => {
+        transaction1 = new MockTransaction1();
+        transaction2 = new MockTransaction2();
+        transaction3 = new MockTransaction3();
+        transactionFixed1 = new MockTransactionFixed1();
+        transactionPadding1 = new MockTransactionPadding1();
+        transactionArrayOneElement = [transaction1]
+        transactionArrayOneElementFixed = [transactionFixed1]
+        transactionArrayOneElementPadding = [transactionPadding1]
+
+        transactionArrayMultiElement = [transaction1, transaction2, transaction3]
+    });
+
+    afterEach(() => {
+        transaction1, transaction2, transaction3 = undefined;
+        transactionFixed1 = undefined;
+        transactionPadding1 = undefined;
+        transactionArrayOneElement = undefined;
+        transactionArrayOneElementFixed = undefined;
+        transactionArrayOneElementPadding = undefined;
+
+        transactionArrayMultiElement = undefined;
+
+    });
+
+});
 
