@@ -124,7 +124,7 @@ So customers can see more clearly withdraw transaction type
 |**Printer**     |                                       |assignDebitColor(@Transaction)         |@void           
 |                |                                       |colorRed()                             |@string  
 
-# *Reasoning Next 2 User Stories can be done using the same Domain Model. If balance is >= 0 make me text green and red if < 0*
+* *Reasoning Next 2 User Stories can be done using the same Domain Model. If balance is >= 0 make me text green and red if < 0*
 
 ### User Story 7
 
