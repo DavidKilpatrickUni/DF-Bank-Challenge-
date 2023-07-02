@@ -212,20 +212,16 @@ describe('Account Tests - User Story 1', () => {
 describe('Account Tests - User Story 2', () => {
 
     let account;
-    let transaction1, transaction2, transaction3;
+    let transaction1;
 
     beforeEach(() => {
         account = new Account('Test Account');
         transaction1 = new MockTransaction1();
-        transaction2 = new MockTransaction2();
-        transaction3 = new MockTransaction3();
     });
 
     afterEach(() => {
         account = undefined;
         transaction1 = undefined;
-        transaction2 = undefined;
-        transaction3 = undefined;
     });
 
     it('test 18 - should call accountDeposit method within the Account class ', () => {
@@ -305,20 +301,16 @@ describe('Account Tests - User Story 2', () => {
 describe('Account Tests - User Story 3', () => {
 
     let account;
-    let transaction1, transaction2, transaction3;
+    let transaction1;
 
     beforeEach(() => {
         account = new Account('Test Account');
         transaction1 = new MockTransaction1();
-        transaction2 = new MockTransaction2();
-        transaction3 = new MockTransaction3();
     });
 
     afterEach(() => {
         account = undefined;
         transaction1 = undefined;
-        transaction2 = undefined;
-        transaction3 = undefined;
     });
 
     it('test 24 - should call accountWithdraw method within the Account class ', () => {

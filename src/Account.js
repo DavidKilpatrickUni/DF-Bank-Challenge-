@@ -54,7 +54,6 @@ class Account {
         this.setBalance(this.getBalance() - amount);
     }
 
-
 }
 
 export default Account;

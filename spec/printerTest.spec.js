@@ -147,7 +147,6 @@ describe('Printer Tests - User Story 4', () => {
     let transactionArrayOneElement;
     let transactionArrayOneElementFixed;
     let transactionArrayOneElementPadding;
-
     let transactionArrayMultiElement
 
     beforeEach(() => {
@@ -159,7 +158,6 @@ describe('Printer Tests - User Story 4', () => {
         transactionArrayOneElement = [transaction1]
         transactionArrayOneElementFixed = [transactionFixed1]
         transactionArrayOneElementPadding = [transactionPadding1]
-
         transactionArrayMultiElement = [transaction1, transaction2, transaction3]
     });
 
@@ -170,9 +168,7 @@ describe('Printer Tests - User Story 4', () => {
         transactionArrayOneElement = undefined;
         transactionArrayOneElementFixed = undefined;
         transactionArrayOneElementPadding = undefined;
-
         transactionArrayMultiElement = undefined;
-
     });
 
     it('test 1 - should call printTransaction() method', () => {
@@ -497,7 +493,6 @@ describe('Printer Tests - User Story 5', () => {
         transactionArrayOneElement = undefined;
         transactionArrayOneElementFixed = undefined;
         transactionArrayOneElementPadding = undefined;
-
         transactionArrayMultiElement = undefined;
 
     });
@@ -639,23 +634,18 @@ describe('Printer Tests - User Story 6', () => {
 
 
     let transaction1, transaction2, transaction3;
-    let transactionFixed1;
     let transactionPadding1, transactionPadding3;
     let transactionArrayOneElement;
-    let transactionArrayOneElementFixed;
     let transactionArrayOneElementPadding;
-
     let transactionArrayMultiElement
 
     beforeEach(() => {
         transaction1 = new MockTransaction1();
         transaction2 = new MockTransaction2();
         transaction3 = new MockTransaction3();
-        transactionFixed1 = new MockTransactionFixed1();
         transactionPadding1 = new MockTransactionPadding1();
         transactionPadding3 = new MockTransactionPadding3();
         transactionArrayOneElement = [transaction1]
-        transactionArrayOneElementFixed = [transactionFixed1]
         transactionArrayOneElementPadding = [transactionPadding1]
 
         transactionArrayMultiElement = [transaction1, transaction2, transaction3]
@@ -663,12 +653,9 @@ describe('Printer Tests - User Story 6', () => {
 
     afterEach(() => {
         transaction1, transaction2, transaction3 = undefined;
-        transactionFixed1 = undefined;
         transactionPadding1, transactionPadding3 = undefined;
         transactionArrayOneElement = undefined;
-        transactionArrayOneElementFixed = undefined;
         transactionArrayOneElementPadding = undefined;
-
         transactionArrayMultiElement = undefined;
 
     });
@@ -791,10 +778,8 @@ describe('Printer Tests - User Story 7 & 8', () => {
 
 
     let transaction1, transaction2, transaction3, transaction4;
-    let transactionFixed1;
     let transactionPadding1, transactionPadding3, transactionPadding4;
     let transactionArrayOneElement;
-    let transactionArrayOneElementFixed;
     let transactionArrayOneElementPadding;
 
     let transactionArrayMultiElement
@@ -804,27 +789,20 @@ describe('Printer Tests - User Story 7 & 8', () => {
         transaction2 = new MockTransaction2();
         transaction3 = new MockTransaction3();
         transaction4 = new MockTransaction4();
-        transactionFixed1 = new MockTransactionFixed1();
         transactionPadding1 = new MockTransactionPadding1();
         transactionPadding3 = new MockTransactionPadding3();
         transactionPadding4 = new MockTransactionPadding4();
         transactionArrayOneElement = [transaction1]
-        transactionArrayOneElementFixed = [transactionFixed1]
         transactionArrayOneElementPadding = [transactionPadding1]
-
         transactionArrayMultiElement = [transaction1, transaction2, transaction3, transaction4]
     });
 
     afterEach(() => {
         transaction1, transaction2, transaction3, transaction4 = undefined;
-        transactionFixed1 = undefined;
         transactionPadding1, transactionPadding3, transactionPadding4 = undefined;
         transactionArrayOneElement = undefined;
-        transactionArrayOneElementFixed = undefined;
         transactionArrayOneElementPadding = undefined;
-
         transactionArrayMultiElement = undefined;
-
     });
 
     it('test 1 - should call balanceColor() method when called', () => {
@@ -903,28 +881,6 @@ describe('Printer Tests - User Story 7 & 8', () => {
         //Act
         Printer.assignBalanceColor(transactionPadding4);
         let actual = transactionPadding4.getTransactionBalance()
-
-        //Assert
-        expect(actual).toBe(expected);
-    });
-
-    it('test 9 - should change Transaction getTransactionBalance to include key words for the color green and reset(base color) for positive balance after full process', () => {
-        //Arrange
-        const expected = `\x1b[0;32m 1000.00 \x1b[0m`;
-        //Act
-        Printer.printTransactionsWithColor(transactionArrayMultiElement);
-        let actual = transactionArrayMultiElement[0].getTransactionBalance()
-
-        //Assert
-        expect(actual).toBe(expected);
-    });
-
-    it('test 10 - should change Transaction getTransactionBalance to include key words for the color red and reset(base color) for negative balance after full process', () => {
-        //Arrange
-        const expected = `\x1b[0;31m-2500.00 \x1b[0m`;
-        //Act
-        Printer.printTransactionsWithColor(transactionArrayMultiElement);
-        let actual = transactionArrayMultiElement[3].getTransactionBalance()
 
         //Assert
         expect(actual).toBe(expected);

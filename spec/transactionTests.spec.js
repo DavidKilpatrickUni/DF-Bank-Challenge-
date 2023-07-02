@@ -114,45 +114,6 @@ describe('Transaction Tests - User Story 2', () => {
         expect(transaction1.getTransactionBalance()).toBe(1000);
     });
 
-    // No longer suitable ( test 11 I couldnt get to work anyway ) - Moved changing balance to Account class side.
-    // it('test 9 - should call setBalance method within Mock Account class', () => {
-    //     //Arrange
-    //     const setBalanceSpy = spyOn(account, 'setBalance')
-    //     const amount = 1000;
-
-    //     //Act
-    //     transaction1.deposit(amount);
-
-    //     //Assert
-    //     expect(setBalanceSpy).toHaveBeenCalled;
-    // });
-
-
-
-    // it('test 10 - should call setBalance method within Mock Account class with parameter', () => {
-    //     //Arrange
-    //     const setBalanceSpy = spyOn(account, 'setBalance')
-    //     const amount = 1000;
-
-    //     //Act
-    //     transaction1.deposit(amount);
-
-    //     //Assert
-    //     expect(setBalanceSpy).toHaveBeenCalledWith(1000);
-    // });
-
-    // it('test 11 -should return that mock Account object has balance of 1000 after 1000 is purposefully added', () => {
-    //     //Arrange
-    //     const amount = 1000;
-
-    //     //Act
-    //     transaction1.deposit(amount);
-
-    //     //Assert
-    //     expect(account.getBalance()).toBe(1000);
-    // });
-
-
     // User input validation
 
     it('test 9 - should return true that input is a Transaction object ', () => {
