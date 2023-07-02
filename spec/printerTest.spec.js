@@ -653,25 +653,25 @@ describe('Printer Tests - User Story 6', () => {
         expect(debitColorSpy).toHaveBeenCalledWith(transactionArrayOneElementPadding);
     });
 
-    // it('test 3 - should call assignCreditColor() method through creditColor() call', () => {
-    //     //Arrange
-    //     const assignCreditColorSpy = spyOn(Printer, 'assignDebitColor')
-    //     //Act
-    //     Printer.creditColor(transactionArrayOneElementPadding);
+    it('test 3 - should call assignDebitColor() method through debitColor() call', () => {
+        //Arrange
+        const assignDebitColorSpy = spyOn(Printer, 'assignDebitColor')
+        //Act
+        Printer.debitColor();
 
-    //     //Assert
-    //     expect(assignCreditColorSpy).toHaveBeenCalled;
-    // });
+        //Assert
+        expect(assignDebitColorSpy).toHaveBeenCalled;
+    });
 
-    // it('test 4 - should call assignCreditColor() method with parameter of element 0 of array through creditColor() call', () => {
-    //     //Arrange
-    //     const assignCreditColorSpy = spyOn(Printer, 'assignCreditColor')
-    //     //Act
-    //     Printer.creditColor(transactionArrayOneElementPadding);
+    it('test 4 - should call assignCreditColor() method with parameter of element 0 of array through creditColor() call', () => {
+        //Arrange
+        const assignDebitColorSpy = spyOn(Printer, 'assignDebitColor')
+        //Act
+        Printer.debitColor(transactionArrayOneElementPadding);
 
-    //     //Assert
-    //     expect(assignCreditColorSpy).toHaveBeenCalledWith(transactionPadding1); // The first element within the array
-    // });
+        //Assert
+        expect(assignDebitColorSpy).toHaveBeenCalledWith(transactionArrayOneElementPadding[0]); // The first element within the array
+    });
 
     // it('test 5 - should call assignCreditColor() method ', () => {
     //     //Arrange
