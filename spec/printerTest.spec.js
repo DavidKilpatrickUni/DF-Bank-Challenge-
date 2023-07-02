@@ -457,5 +457,15 @@ describe('Printer Tests - User Story 5', () => {
 
     });
 
+    it('test 1 - should call creditColor() method when called', () => {
+        //Arrange
+        const creditColorSpy = spyOn(Printer, 'creditColor')
+        //Act
+        Printer.creditColor();
+
+        //Assert
+        expect(creditColorSpy).toHaveBeenCalled;
+    });
+
 });
 
