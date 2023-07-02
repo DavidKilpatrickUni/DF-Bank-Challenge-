@@ -51,12 +51,12 @@ So that we can do business through transactions
 
 ### Domain Model
 
-|Objects;     |Properties;                            |Messages;                       |Output;
-|:-------------|:---------------------------------------|:--------------------------------|:----------                                    
+|Objects;     |Properties;                            |Messages;                        |Output;
+|:------------|:--------------------------------------|:--------------------------------|:----------                                    
 |Account;     |accountID @Number;                     |                                 |
-|              |balance @Number;                       |                                 |
-|              |listOfTransaction @Array[Transaction]; |makeTransaction(@Transaction);  |@void;                 
-|              |                                        |                                 |
+|             |balance @Number;                       |                                 |
+|             |listOfTransaction @Array[Transaction]; |makeTransaction(@Transaction);   |@void;                 
+|             |                                       |                                 |
 |Transaction; |transactionID @Number                  |                                 |
 
 ### User Story 2
