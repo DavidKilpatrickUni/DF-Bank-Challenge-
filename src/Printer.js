@@ -53,9 +53,17 @@ class Printer {
         // })
     }
 
+    static creditColor(transactionList) {
+        transactionList.forEach((transaction) => {
+            Printer.assignCreditColor(transaction);
+        })
+    }
+
     static getHeader() {
         console.log('date       || credit  || debit  || balance');
     }
+
+
 
 
 }

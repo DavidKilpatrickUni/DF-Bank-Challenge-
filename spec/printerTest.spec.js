@@ -467,5 +467,25 @@ describe('Printer Tests - User Story 5', () => {
         expect(creditColorSpy).toHaveBeenCalled;
     });
 
+    it('test 2 - should call creditColor() method with parameter when called', () => {
+        //Arrange
+        const creditColorSpy = spyOn(Printer, 'creditColor')
+        //Act
+        Printer.creditColor(transactionArrayOneElementPadding);
+
+        //Assert
+        expect(creditColorSpy).toHaveBeenCalledWith(transactionArrayOneElementPadding);
+    });
+
+    it('test 3 - should call assignCreditColor() method through creditColor() call', () => {
+        //Arrange
+        const assignCreditColorSpy = spyOn(Printer, 'assignCreditColor')
+        //Act
+        Printer.creditColor(transactionArrayOneElementPadding);
+
+        //Assert
+        expect(assignCreditColorSpy).toHaveBeenCalledWith();
+    });
+
 });
 
