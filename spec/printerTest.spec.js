@@ -494,8 +494,68 @@ describe('Printer Tests - User Story 5', () => {
         Printer.creditColor(transactionArrayOneElementPadding);
 
         //Assert
-        expect(assignCreditColorSpy).toHaveBeenCalledWith(transactionArrayOneElementPadding[0]);
+        expect(assignCreditColorSpy).toHaveBeenCalledWith(transactionPadding1); // The first element within the array
     });
+
+    it('test 5 - should call assignCreditColor() method ', () => {
+        //Arrange
+        const assignCreditColorSpy = spyOn(Printer, 'assignCreditColor')
+        //Act
+        Printer.assignCreditColor();
+
+        //Assert
+        expect(assignCreditColorSpy).toHaveBeenCalled;
+    });
+
+    it('test 6 - should call assignCreditColor() method with parameter', () => {
+        //Arrange
+        const assignCreditColorSpy = spyOn(Printer, 'assignCreditColor')
+        //Act
+        Printer.assignCreditColor(transactionPadding1); // single element at a time since this method is called from another method running a loop
+
+        //Assert
+        expect(assignCreditColorSpy).toHaveBeenCalledWith(transactionPadding1);
+    });
+
+    it('test 7 - should call colorGreen() method ', () => {
+        //Arrange
+        const colorGreenSpy = spyOn(Printer, 'colorGreen')
+        //Act
+        Printer.colorGreen();
+
+        //Assert
+        expect(colorGreenSpy).toHaveBeenCalled;
+    });
+
+    it('test 8 - should return expected value of colorGreen() ', () => {
+        //Arrange
+        const colorGreenReturn = `\x1b[0;32m`;
+        //Act
+        let actual = Printer.colorGreen();
+
+        //Assert
+        expect(actual).toBe(colorGreenReturn);
+    });
+
+    // it('test  - should call colorGreen() method through creditColor() call', () => {
+    //     //Arrange
+    //     const colorGreenSpy = spyOn(Printer, 'colorGreen')
+    //     //Act
+    //     Printer.assignCreditColor(transactionPadding1);
+
+    //     //Assert
+    //     expect(colorGreenSpy).toHaveBeenCalledWith(transactionPadding1);
+    // });
+
+    // it('test  - should change getAmountDeposited to include key word the color green', () => {
+    //     //Arrange
+    //     const assignCreditColorSpy = spyOn(Printer, 'assignCreditColor')
+    //     //Act
+    //     Printer.assignCreditColor(transactionPadding1); // single element at a time since this method is called from another method running a loop
+
+    //     //Assert
+    //     expect(assignCreditColorSpy).toHaveBeenCalledWith(transactionPadding1);
+    // });
 
 });
 
