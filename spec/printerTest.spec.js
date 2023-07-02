@@ -537,25 +537,57 @@ describe('Printer Tests - User Story 5', () => {
         expect(actual).toBe(colorGreenReturn);
     });
 
-    // it('test  - should call colorGreen() method through creditColor() call', () => {
-    //     //Arrange
-    //     const colorGreenSpy = spyOn(Printer, 'colorGreen')
-    //     //Act
-    //     Printer.assignCreditColor(transactionPadding1);
+    it('test 9 - should call colorReset() method ', () => {
+        //Arrange
+        const colorResetSpy = spyOn(Printer, 'resetColor')
+        //Act
+        Printer.resetColor();
 
-    //     //Assert
-    //     expect(colorGreenSpy).toHaveBeenCalledWith(transactionPadding1);
-    // });
+        //Assert
+        expect(colorResetSpy).toHaveBeenCalled;
+    });
 
-    // it('test  - should change getAmountDeposited to include key word the color green', () => {
-    //     //Arrange
-    //     const assignCreditColorSpy = spyOn(Printer, 'assignCreditColor')
-    //     //Act
-    //     Printer.assignCreditColor(transactionPadding1); // single element at a time since this method is called from another method running a loop
+    it('test 10 - should return expected value of colorReset() ', () => {
+        //Arrange
+        const colorResetReturn = `\x1b[0m`;
+        //Act
+        let actual = Printer.resetColor();
 
-    //     //Assert
-    //     expect(assignCreditColorSpy).toHaveBeenCalledWith(transactionPadding1);
-    // });
+        //Assert
+        expect(actual).toBe(colorResetReturn);
+    });
+
+    it('test 11 - should call colorGreen() method through creditColor() call', () => {
+        //Arrange
+        const colorGreenSpy = spyOn(Printer, 'colorGreen')
+        //Act
+        Printer.assignCreditColor(transactionPadding1);
+
+        //Assert
+        expect(colorGreenSpy).toHaveBeenCalled;
+    });
+
+    it('test 12 - should call colorReset() method through creditColor() call', () => {
+        //Arrange
+        const colorResetSpy = spyOn(Printer, 'resetColor')
+        //Act
+        Printer.assignCreditColor(transactionPadding1);
+
+        //Assert
+        expect(colorResetSpy).toHaveBeenCalled;
+    });
+
+    it('test 13 - should change Transaction getAmountDeposited to include key words for the color green and reset(base color)', () => {
+        //Arrange
+        const expected = `\x1b[0;32m 1000.00 \x1b[0m`
+        //Act
+        Printer.assignCreditColor(transactionPadding1);
+        let actual = transactionPadding1.getAmountDeposited()
+
+        //Assert
+        expect(actual).toBe(expected);
+    });
+
 
 });
 

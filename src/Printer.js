@@ -71,6 +71,10 @@ class Printer {
         return `\x1b[0;32m`;
     }
 
+    static resetColor() {
+        return `\x1b[0m`;
+    }
+
 
 }
 export default Printer;
