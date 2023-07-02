@@ -74,12 +74,26 @@ class Printer {
         if (input.getAmountDeposited() > 0) { input.setAmountDeposited(Printer.colorGreen() + input.getAmountDeposited() + Printer.resetColor()) }
     }
 
+    static debitColor(transactionList) {
+        transactionList.forEach((transaction) => {
+            Printer.assignDebitColor(transaction);
+        })
+    }
+
+    static assignDebitColor(input) {
+        if (input.getAmountWithdrawn() > 0) { input.setAmountWithdrawn(Printer.colorRed() + input.getAmountWithdrawn() + Printer.resetColor()) }
+    }
+
     static getHeader() {
         console.log('date       || credit  || debit  || balance');
     }
 
     static colorGreen() {
         return `\x1b[0;32m`;
+    }
+
+    static colorRed() {
+        return `\x1b[0;31m`;
     }
 
     static resetColor() {
