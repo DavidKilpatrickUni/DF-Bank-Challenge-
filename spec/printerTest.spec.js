@@ -588,6 +588,17 @@ describe('Printer Tests - User Story 5', () => {
         expect(actual).toBe(expected);
     });
 
+    it('test 14 - should color transaction to expected after following whole process', () => {
+        //Arrange
+        const expected = `\x1b[0;32m 2000.00 \x1b[0m`
+        //Act
+        Printer.printTransactionsWithColor(transactionArrayMultiElement);
+        let actual = transactionArrayMultiElement[1].getAmountDeposited()
+
+        //Assert
+        expect(actual).toBe(expected);
+    });
+
 
 });
 
