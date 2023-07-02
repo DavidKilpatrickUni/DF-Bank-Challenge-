@@ -16,6 +16,13 @@ class Printer {
         Printer.displayTransactions(transactionList);
     }
 
+    static printTransactionsWithColor(transactionList) {
+        Printer.getFormat(transactionList);
+        Printer.getColors(transactionList);
+        Printer.getHeader();
+        Printer.displayTransactions(transactionList);
+    }
+
     static getFormat(transactionList) {
         Printer.toFixed(transactionList);
         Printer.padding(transactionList);
@@ -51,6 +58,10 @@ class Printer {
         //     transaction.setAmountWithdrawn(transaction.getAmountWithdrawn().padStart(7).padEnd(8));
         //     transaction.setTransactionBalance(transaction.getTransactionBalance().padStart(8).padEnd(9));
         // })
+    }
+
+    static getColors(transactionList) {
+        Printer.creditColor(transactionList);
     }
 
     static creditColor(transactionList) {
