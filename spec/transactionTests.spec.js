@@ -2,7 +2,7 @@ import Transaction from '../src/Transaction.js';
 
 class MockAccount {
     getBalance = () => 0;
-    setBalance = amount => { };
+    setBalance = amount => { this.getBalance() = amount };
 };
 
 describe('Transaction Tests - User Story 2', () => {
