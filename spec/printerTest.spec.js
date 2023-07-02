@@ -693,24 +693,24 @@ describe('Printer Tests - User Story 6', () => {
         expect(assignDebitColorSpy).toHaveBeenCalledWith(transactionPadding1);
     });
 
-    // it('test 7 - should call colorGreen() method ', () => {
-    //     //Arrange
-    //     const colorGreenSpy = spyOn(Printer, 'colorGreen')
-    //     //Act
-    //     Printer.colorGreen();
+    it('test 7 - should call colorRed() method ', () => {
+        //Arrange
+        const colorRedSpy = spyOn(Printer, 'colorRed')
+        //Act
+        Printer.colorGreen();
 
-    //     //Assert
-    //     expect(colorGreenSpy).toHaveBeenCalled;
-    // });
+        //Assert
+        expect(colorRedSpy).toHaveBeenCalled;
+    });
 
-    // it('test 8 - should return expected value of colorGreen() ', () => {
-    //     //Arrange
-    //     const colorGreenReturn = `\x1b[0;32m`;
-    //     //Act
-    //     let actual = Printer.colorGreen();
+    it('test 8 - should return expected value of colorRed() ', () => {
+        //Arrange
+        const colorRedReturn = `\x1b[0;31m`;
+        //Act
+        let actual = Printer.colorRed();
 
-    //     //Assert
-    //     expect(actual).toBe(colorGreenReturn);
-    // });
+        //Assert
+        expect(actual).toBe(colorRedReturn);
+    });
 
 });
