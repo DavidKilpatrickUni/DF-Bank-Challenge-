@@ -62,6 +62,8 @@ class Printer {
 
     static getColors(transactionList) {
         Printer.creditColor(transactionList);
+        Printer.debitColor(transactionList);
+        Printer.balanceColor(transactionList);
     }
 
     static creditColor(transactionList) {
@@ -82,6 +84,22 @@ class Printer {
 
     static assignDebitColor(input) {
         if (input.getAmountWithdrawn() > 0) { input.setAmountWithdrawn(Printer.colorRed() + input.getAmountWithdrawn() + Printer.resetColor()) }
+    }
+
+    static balanceColor(transactionList) {
+        transactionList.forEach((transaction) => {
+            Printer.assignBalanceColor(transaction);
+        })
+    }
+
+    static assignBalanceColor(input) {
+        //Do you prefer two ifs that do 1 thing or the ternary. I know you are suggest against IF/Else statements but this apply to ternary. (Thinking) The code runs quicker once the If is not met and moves on in this scenario 
+
+        if (input.getTransactionBalance() >= 0) { input.setTransactionBalance(Printer.colorGreen() + input.getTransactionBalance() + Printer.resetColor()) };
+
+        if (input.getTransactionBalance() < 0) { input.setTransactionBalance(Printer.colorRed() + input.getTransactionBalance() + Printer.resetColor()) };
+
+        // (input.getTransactionBalance() >= 0) ? input.setTransactionBalance(Printer.colorGreen() + input.getTransactionBalance() + Printer.resetColor()) : input.setTransactionBalance(Printer.colorRed() + input.getTransactionBalance() + Printer.resetColor())
     }
 
     static getHeader() {

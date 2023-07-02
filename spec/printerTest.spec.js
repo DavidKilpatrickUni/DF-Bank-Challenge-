@@ -103,6 +103,40 @@ class MockTransactionPadding3 {
     setTransactionBalance = amount => { this.balance = amount };
 }
 
+class MockTransaction4 {
+
+    date = "16/01/2012";
+    amountDeposited = undefined;
+    amountWithdrawn = 5000;
+    balance = -2500.00;
+
+    getDate = () => this.date;
+    setDate = date => { this.date = date };
+    getAmountDeposited = () => this.amountDeposited;
+    setAmountDeposited = amount => { this.amountDeposited = amount };
+    getAmountWithdrawn = () => this.amountWithdrawn;
+    setAmountWithdrawn = amount => { this.amountWithdrawn = amount };
+    getTransactionBalance = () => this.balance;
+    setTransactionBalance = amount => { this.balance = amount };
+}
+
+class MockTransactionPadding4 {
+
+    date = "16/01/2012";
+    amountDeposited = '         ';
+    amountWithdrawn = ' 5000.00 ';
+    balance = ' -2500.00    ';
+
+    getDate = () => this.date;
+    setDate = date => { this.date = date };
+    getAmountDeposited = () => this.amountDeposited;
+    setAmountDeposited = amount => { this.amountDeposited = amount };
+    getAmountWithdrawn = () => this.amountWithdrawn;
+    setAmountWithdrawn = amount => { this.amountWithdrawn = amount };
+    getTransactionBalance = () => this.balance;
+    setTransactionBalance = amount => { this.balance = amount };
+}
+
 
 describe('Printer Tests - User Story 4', () => {
 
@@ -756,9 +790,9 @@ describe('Printer Tests - User Story 6', () => {
 describe('Printer Tests - User Story 7 & 8', () => {
 
 
-    let transaction1, transaction2, transaction3;
+    let transaction1, transaction2, transaction3, transaction4;
     let transactionFixed1;
-    let transactionPadding1, transactionPadding3;
+    let transactionPadding1, transactionPadding3, transactionPadding4;
     let transactionArrayOneElement;
     let transactionArrayOneElementFixed;
     let transactionArrayOneElementPadding;
@@ -769,20 +803,22 @@ describe('Printer Tests - User Story 7 & 8', () => {
         transaction1 = new MockTransaction1();
         transaction2 = new MockTransaction2();
         transaction3 = new MockTransaction3();
+        transaction4 = new MockTransaction4();
         transactionFixed1 = new MockTransactionFixed1();
         transactionPadding1 = new MockTransactionPadding1();
         transactionPadding3 = new MockTransactionPadding3();
+        transactionPadding4 = new MockTransactionPadding4();
         transactionArrayOneElement = [transaction1]
         transactionArrayOneElementFixed = [transactionFixed1]
         transactionArrayOneElementPadding = [transactionPadding1]
 
-        transactionArrayMultiElement = [transaction1, transaction2, transaction3]
+        transactionArrayMultiElement = [transaction1, transaction2, transaction3, transaction4]
     });
 
     afterEach(() => {
-        transaction1, transaction2, transaction3 = undefined;
+        transaction1, transaction2, transaction3, transaction4 = undefined;
         transactionFixed1 = undefined;
-        transactionPadding1, transactionPadding3 = undefined;
+        transactionPadding1, transactionPadding3, transactionPadding4 = undefined;
         transactionArrayOneElement = undefined;
         transactionArrayOneElementFixed = undefined;
         transactionArrayOneElementPadding = undefined;
@@ -828,7 +864,70 @@ describe('Printer Tests - User Story 7 & 8', () => {
         Printer.assignBalanceColor(transactionArrayOneElementPadding);
 
         //Assert
-        expect(assignBalanceColorSpy).toHaveBeenCalledWith(transactionArrayOneElementPadding[0]); // The first element within the array
+        expect(assignBalanceColorSpy).toHaveBeenCalledWith(transactionArrayOneElementPadding);
+    });
+    it('test 5 - should call assignBalanceColor() method ', () => {
+        //Arrange
+        const assignBalanceColorSpy = spyOn(Printer, 'assignBalanceColor')
+        //Act
+        Printer.assignBalanceColor();
+
+        //Assert
+        expect(assignBalanceColorSpy).toHaveBeenCalled;
+    });
+
+    it('test 6 - should call assignBalanceColor() method with parameter', () => {
+        //Arrange
+        const assignBalanceColorSpy = spyOn(Printer, 'assignBalanceColor')
+        //Act
+        Printer.assignBalanceColor(transactionPadding1);
+
+        //Assert
+        expect(assignBalanceColorSpy).toHaveBeenCalledWith(transactionPadding1);
+    });
+
+    it('test 7 - should change Transaction getTransactionBalance to include key words for the color green and reset(base color) for positive balance', () => {
+        //Arrange
+        const expected = `\x1b[0;32m 1000.00 \x1b[0m`;
+        //Act
+        Printer.assignBalanceColor(transactionPadding1);
+        let actual = transactionPadding1.getTransactionBalance()
+
+        //Assert
+        expect(actual).toBe(expected);
+    });
+
+    it('test 8 - should change Transaction getTransactionBalance to include key words for the color red and reset(base color) for negative balance', () => {
+        //Arrange
+        const expected = `\x1b[0;31m -2500.00    \x1b[0m`;
+        //Act
+        Printer.assignBalanceColor(transactionPadding4);
+        let actual = transactionPadding4.getTransactionBalance()
+
+        //Assert
+        expect(actual).toBe(expected);
+    });
+
+    it('test 9 - should change Transaction getTransactionBalance to include key words for the color green and reset(base color) for positive balance after full process', () => {
+        //Arrange
+        const expected = `\x1b[0;32m 1000.00 \x1b[0m`;
+        //Act
+        Printer.printTransactionsWithColor(transactionArrayMultiElement);
+        let actual = transactionArrayMultiElement[0].getTransactionBalance()
+
+        //Assert
+        expect(actual).toBe(expected);
+    });
+
+    it('test 10 - should change Transaction getTransactionBalance to include key words for the color red and reset(base color) for negative balance after full process', () => {
+        //Arrange
+        const expected = `\x1b[0;31m-2500.00 \x1b[0m`;
+        //Act
+        Printer.printTransactionsWithColor(transactionArrayMultiElement);
+        let actual = transactionArrayMultiElement[3].getTransactionBalance()
+
+        //Assert
+        expect(actual).toBe(expected);
     });
 
 });
