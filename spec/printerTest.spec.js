@@ -752,3 +752,83 @@ describe('Printer Tests - User Story 6', () => {
 
 
 });
+
+describe('Printer Tests - User Story 7 & 8', () => {
+
+
+    let transaction1, transaction2, transaction3;
+    let transactionFixed1;
+    let transactionPadding1, transactionPadding3;
+    let transactionArrayOneElement;
+    let transactionArrayOneElementFixed;
+    let transactionArrayOneElementPadding;
+
+    let transactionArrayMultiElement
+
+    beforeEach(() => {
+        transaction1 = new MockTransaction1();
+        transaction2 = new MockTransaction2();
+        transaction3 = new MockTransaction3();
+        transactionFixed1 = new MockTransactionFixed1();
+        transactionPadding1 = new MockTransactionPadding1();
+        transactionPadding3 = new MockTransactionPadding3();
+        transactionArrayOneElement = [transaction1]
+        transactionArrayOneElementFixed = [transactionFixed1]
+        transactionArrayOneElementPadding = [transactionPadding1]
+
+        transactionArrayMultiElement = [transaction1, transaction2, transaction3]
+    });
+
+    afterEach(() => {
+        transaction1, transaction2, transaction3 = undefined;
+        transactionFixed1 = undefined;
+        transactionPadding1, transactionPadding3 = undefined;
+        transactionArrayOneElement = undefined;
+        transactionArrayOneElementFixed = undefined;
+        transactionArrayOneElementPadding = undefined;
+
+        transactionArrayMultiElement = undefined;
+
+    });
+
+    it('test 1 - should call balanceColor() method when called', () => {
+        //Arrange
+        const balanceColorSpy = spyOn(Printer, 'balanceColor')
+        //Act
+        Printer.balanceColor();
+
+        //Assert
+        expect(balanceColorSpy).toHaveBeenCalled;
+    });
+
+    it('test 2 - should call balanceColor() method with parameter when called', () => {
+        //Arrange
+        const balanceColorSpy = spyOn(Printer, 'balanceColor')
+        //Act
+        Printer.balanceColor(transactionArrayOneElementPadding);
+
+        //Assert
+        expect(balanceColorSpy).toHaveBeenCalledWith(transactionArrayOneElementPadding);
+    });
+
+    it('test 3 - should call assignBalanceColor() method through balanceColor() call', () => {
+        //Arrange
+        const assignBalanceColorSpy = spyOn(Printer, 'assignBalanceColor')
+        //Act
+        Printer.assignBalanceColor(transactionArrayOneElementPadding);
+
+        //Assert
+        expect(assignBalanceColorSpy).toHaveBeenCalled;
+    });
+
+    it('test 4 - should call assignBalanceColor() method with parameter of element 0 of array through balanceColor() call', () => {
+        //Arrange
+        const assignBalanceColorSpy = spyOn(Printer, 'assignBalanceColor')
+        //Act
+        Printer.assignBalanceColor(transactionArrayOneElementPadding);
+
+        //Assert
+        expect(assignBalanceColorSpy).toHaveBeenCalledWith(transactionArrayOneElementPadding[0]); // The first element within the array
+    });
+
+});
