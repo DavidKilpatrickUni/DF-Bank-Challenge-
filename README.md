@@ -127,6 +127,9 @@ So customers can see more clearly withdraw transaction type
 -Printer;                                             -assignDebitColor(@Transaction)               -@void
                                                       -colorRed()                                   -@String
 
+
+### Reasoning Next 2 User Stories can be done using the same Domain Model. If balance is >= 0 make me text green and red if < 0
+
 ### User Story 7
 As a bank company
 I want printable bank statements of accounts to include green text for positive balance values
@@ -136,6 +139,11 @@ So customers can see more clearly balance condition
 As a bank company
 I want printable bank statements of accounts to include red text for negative balance values
 So customers can see more clearly balance condition
+
+-Objects;       -Properties;                          -Messages;                                    -Output;
+                                                   
+-Printer;                                             -assignBalanceColor(@Transaction)               -@void
+                                                 
 
 
 

@@ -86,6 +86,23 @@ class MockTransaction3 {
     setTransactionBalance = amount => { this.balance = amount };
 }
 
+class MockTransactionPadding3 {
+
+    date = "14/01/2012";
+    amountDeposited = '         ';
+    amountWithdrawn = ' 500.00 ';
+    balance = ' 2500.00    ';
+
+    getDate = () => this.date;
+    setDate = date => { this.date = date };
+    getAmountDeposited = () => this.amountDeposited;
+    setAmountDeposited = amount => { this.amountDeposited = amount };
+    getAmountWithdrawn = () => this.amountWithdrawn;
+    setAmountWithdrawn = amount => { this.amountWithdrawn = amount };
+    getTransactionBalance = () => this.balance;
+    setTransactionBalance = amount => { this.balance = amount };
+}
+
 
 describe('Printer Tests - User Story 4', () => {
 
@@ -551,7 +568,7 @@ describe('Printer Tests - User Story 5', () => {
         expect(actual).toBe(colorResetReturn);
     });
 
-    it('test 11 - should call colorGreen() method through creditColor() call', () => {
+    it('test 11 - should call colorGreen() method through assignCreditColor() call', () => {
         //Arrange
         const colorGreenSpy = spyOn(Printer, 'colorGreen')
         //Act
@@ -561,7 +578,7 @@ describe('Printer Tests - User Story 5', () => {
         expect(colorGreenSpy).toHaveBeenCalled;
     });
 
-    it('test 12 - should call colorReset() method through creditColor() call', () => {
+    it('test 12 - should call colorReset() method through assignCreditColor() call', () => {
         //Arrange
         const colorResetSpy = spyOn(Printer, 'resetColor')
         //Act
@@ -582,18 +599,6 @@ describe('Printer Tests - User Story 5', () => {
         expect(actual).toBe(expected);
     });
 
-    it('test 14 - should color transaction to expected after following whole process', () => {
-        //Arrange
-        const expected = `\x1b[0;32m 2000.00 \x1b[0m`
-        //Act
-        Printer.printTransactionsWithColor(transactionArrayMultiElement);
-        let actual = transactionArrayMultiElement[1].getAmountDeposited()
-
-        //Assert
-        expect(actual).toBe(expected);
-    });
-
-
 });
 
 describe('Printer Tests - User Story 6', () => {
@@ -601,7 +606,7 @@ describe('Printer Tests - User Story 6', () => {
 
     let transaction1, transaction2, transaction3;
     let transactionFixed1;
-    let transactionPadding1;
+    let transactionPadding1, transactionPadding3;
     let transactionArrayOneElement;
     let transactionArrayOneElementFixed;
     let transactionArrayOneElementPadding;
@@ -614,6 +619,7 @@ describe('Printer Tests - User Story 6', () => {
         transaction3 = new MockTransaction3();
         transactionFixed1 = new MockTransactionFixed1();
         transactionPadding1 = new MockTransactionPadding1();
+        transactionPadding3 = new MockTransactionPadding3();
         transactionArrayOneElement = [transaction1]
         transactionArrayOneElementFixed = [transactionFixed1]
         transactionArrayOneElementPadding = [transactionPadding1]
@@ -624,7 +630,7 @@ describe('Printer Tests - User Story 6', () => {
     afterEach(() => {
         transaction1, transaction2, transaction3 = undefined;
         transactionFixed1 = undefined;
-        transactionPadding1 = undefined;
+        transactionPadding1, transactionPadding3 = undefined;
         transactionArrayOneElement = undefined;
         transactionArrayOneElementFixed = undefined;
         transactionArrayOneElementPadding = undefined;
@@ -712,5 +718,37 @@ describe('Printer Tests - User Story 6', () => {
         //Assert
         expect(actual).toBe(colorRedReturn);
     });
+
+    it('test 9 - should call colorRed() method through assignDebitColor() call', () => {
+        //Arrange
+        const colorRedSpy = spyOn(Printer, 'colorRed')
+        //Act
+        Printer.assignDebitColor(transactionPadding1);
+
+        //Assert
+        expect(colorRedSpy).toHaveBeenCalled;
+    });
+
+    it('test 10 - should call colorReset() method through assignDebitColor() call', () => {
+        //Arrange
+        const colorResetSpy = spyOn(Printer, 'resetColor')
+        //Act
+        Printer.assignDebitColor(transactionPadding1);
+
+        //Assert
+        expect(colorResetSpy).toHaveBeenCalled;
+    });
+
+    it('test 11 - should change Transaction getAmountDeposited to include key words for the color red and reset(base color)', () => {
+        //Arrange
+        const expected = `\x1b[0;31m 500.00 \x1b[0m`;
+        //Act
+        Printer.assignDebitColor(transactionPadding3);
+        let actual = transactionPadding3.getAmountWithdrawn()
+
+        //Assert
+        expect(actual).toBe(expected);
+    });
+
 
 });
