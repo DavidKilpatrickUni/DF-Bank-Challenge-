@@ -59,6 +59,10 @@ class Printer {
         })
     }
 
+    static assignCreditColor(input) {
+        if (input.getAmountDeposited() > 0) { input.setAmountDeposited(Printer.colorGreen() + input.getAmountDeposited() + Printer.resetColor()) }
+    }
+
     static getHeader() {
         console.log('date       || credit  || debit  || balance');
     }

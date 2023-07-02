@@ -484,7 +484,17 @@ describe('Printer Tests - User Story 5', () => {
         Printer.creditColor(transactionArrayOneElementPadding);
 
         //Assert
-        expect(assignCreditColorSpy).toHaveBeenCalledWith();
+        expect(assignCreditColorSpy).toHaveBeenCalled;
+    });
+
+    it('test 4 - should call assignCreditColor() method with parameter of element 0 of array through creditColor() call', () => {
+        //Arrange
+        const assignCreditColorSpy = spyOn(Printer, 'assignCreditColor')
+        //Act
+        Printer.creditColor(transactionArrayOneElementPadding);
+
+        //Assert
+        expect(assignCreditColorSpy).toHaveBeenCalledWith(transactionArrayOneElementPadding[0]);
     });
 
 });
