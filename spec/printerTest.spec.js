@@ -1,6 +1,5 @@
 import Printer from '../src/Printer.js';
 
-
 class MockTransaction1 {
 
     date = new Date("2012-1-10").toLocaleDateString('en-UK');
@@ -468,10 +467,7 @@ describe('Printer Tests - User Story 5', () => {
     let transactionFixed1;
     let transactionPadding1;
     let transactionArrayOneElement;
-    let transactionArrayOneElementFixed;
     let transactionArrayOneElementPadding;
-
-    let transactionArrayMultiElement
 
     beforeEach(() => {
         transaction1 = new MockTransaction1();
@@ -480,10 +476,8 @@ describe('Printer Tests - User Story 5', () => {
         transactionFixed1 = new MockTransactionFixed1();
         transactionPadding1 = new MockTransactionPadding1();
         transactionArrayOneElement = [transaction1]
-        transactionArrayOneElementFixed = [transactionFixed1]
         transactionArrayOneElementPadding = [transactionPadding1]
 
-        transactionArrayMultiElement = [transaction1, transaction2, transaction3]
     });
 
     afterEach(() => {
@@ -491,9 +485,7 @@ describe('Printer Tests - User Story 5', () => {
         transactionFixed1 = undefined;
         transactionPadding1 = undefined;
         transactionArrayOneElement = undefined;
-        transactionArrayOneElementFixed = undefined;
         transactionArrayOneElementPadding = undefined;
-        transactionArrayMultiElement = undefined;
 
     });
 
@@ -637,7 +629,6 @@ describe('Printer Tests - User Story 6', () => {
     let transactionPadding1, transactionPadding3;
     let transactionArrayOneElement;
     let transactionArrayOneElementPadding;
-    let transactionArrayMultiElement
 
     beforeEach(() => {
         transaction1 = new MockTransaction1();
@@ -647,8 +638,6 @@ describe('Printer Tests - User Story 6', () => {
         transactionPadding3 = new MockTransactionPadding3();
         transactionArrayOneElement = [transaction1]
         transactionArrayOneElementPadding = [transactionPadding1]
-
-        transactionArrayMultiElement = [transaction1, transaction2, transaction3]
     });
 
     afterEach(() => {
@@ -656,8 +645,6 @@ describe('Printer Tests - User Story 6', () => {
         transactionPadding1, transactionPadding3 = undefined;
         transactionArrayOneElement = undefined;
         transactionArrayOneElementPadding = undefined;
-        transactionArrayMultiElement = undefined;
-
     });
 
     it('test 1 - should call debitColor() method when called', () => {
@@ -782,8 +769,6 @@ describe('Printer Tests - User Story 7 & 8', () => {
     let transactionArrayOneElement;
     let transactionArrayOneElementPadding;
 
-    let transactionArrayMultiElement
-
     beforeEach(() => {
         transaction1 = new MockTransaction1();
         transaction2 = new MockTransaction2();
@@ -794,7 +779,6 @@ describe('Printer Tests - User Story 7 & 8', () => {
         transactionPadding4 = new MockTransactionPadding4();
         transactionArrayOneElement = [transaction1]
         transactionArrayOneElementPadding = [transactionPadding1]
-        transactionArrayMultiElement = [transaction1, transaction2, transaction3, transaction4]
     });
 
     afterEach(() => {
@@ -802,7 +786,6 @@ describe('Printer Tests - User Story 7 & 8', () => {
         transactionPadding1, transactionPadding3, transactionPadding4 = undefined;
         transactionArrayOneElement = undefined;
         transactionArrayOneElementPadding = undefined;
-        transactionArrayMultiElement = undefined;
     });
 
     it('test 1 - should call balanceColor() method when called', () => {
