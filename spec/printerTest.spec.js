@@ -413,15 +413,9 @@ describe('Printer Tests - User Story 4', () => {
     });
 
 
-
-
-
-
-
 })
 
 describe('Printer Tests - User Story 5', () => {
-
 
     let transaction1, transaction2, transaction3;
     let transactionFixed1;
@@ -602,3 +596,121 @@ describe('Printer Tests - User Story 5', () => {
 
 });
 
+describe('Printer Tests - User Story 6', () => {
+
+
+    let transaction1, transaction2, transaction3;
+    let transactionFixed1;
+    let transactionPadding1;
+    let transactionArrayOneElement;
+    let transactionArrayOneElementFixed;
+    let transactionArrayOneElementPadding;
+
+    let transactionArrayMultiElement
+
+    beforeEach(() => {
+        transaction1 = new MockTransaction1();
+        transaction2 = new MockTransaction2();
+        transaction3 = new MockTransaction3();
+        transactionFixed1 = new MockTransactionFixed1();
+        transactionPadding1 = new MockTransactionPadding1();
+        transactionArrayOneElement = [transaction1]
+        transactionArrayOneElementFixed = [transactionFixed1]
+        transactionArrayOneElementPadding = [transactionPadding1]
+
+        transactionArrayMultiElement = [transaction1, transaction2, transaction3]
+    });
+
+    afterEach(() => {
+        transaction1, transaction2, transaction3 = undefined;
+        transactionFixed1 = undefined;
+        transactionPadding1 = undefined;
+        transactionArrayOneElement = undefined;
+        transactionArrayOneElementFixed = undefined;
+        transactionArrayOneElementPadding = undefined;
+
+        transactionArrayMultiElement = undefined;
+
+    });
+
+    it('test 1 - should call debitColor() method when called', () => {
+        //Arrange
+        const debitColorSpy = spyOn(Printer, 'debitColor')
+        //Act
+        Printer.debitColor();
+
+        //Assert
+        expect(debitColorSpy).toHaveBeenCalled;
+    });
+
+    it('test 2 - should call debitColor() method with parameter when called', () => {
+        //Arrange
+        const debitColorSpy = spyOn(Printer, 'debitColor')
+        //Act
+        Printer.debitColor(transactionArrayOneElementPadding);
+
+        //Assert
+        expect(debitColorSpy).toHaveBeenCalledWith(transactionArrayOneElementPadding);
+    });
+
+    // it('test 3 - should call assignCreditColor() method through creditColor() call', () => {
+    //     //Arrange
+    //     const assignCreditColorSpy = spyOn(Printer, 'assignDebitColor')
+    //     //Act
+    //     Printer.creditColor(transactionArrayOneElementPadding);
+
+    //     //Assert
+    //     expect(assignCreditColorSpy).toHaveBeenCalled;
+    // });
+
+    // it('test 4 - should call assignCreditColor() method with parameter of element 0 of array through creditColor() call', () => {
+    //     //Arrange
+    //     const assignCreditColorSpy = spyOn(Printer, 'assignCreditColor')
+    //     //Act
+    //     Printer.creditColor(transactionArrayOneElementPadding);
+
+    //     //Assert
+    //     expect(assignCreditColorSpy).toHaveBeenCalledWith(transactionPadding1); // The first element within the array
+    // });
+
+    // it('test 5 - should call assignCreditColor() method ', () => {
+    //     //Arrange
+    //     const assignCreditColorSpy = spyOn(Printer, 'assignCreditColor')
+    //     //Act
+    //     Printer.assignCreditColor();
+
+    //     //Assert
+    //     expect(assignCreditColorSpy).toHaveBeenCalled;
+    // });
+
+    // it('test 6 - should call assignCreditColor() method with parameter', () => {
+    //     //Arrange
+    //     const assignCreditColorSpy = spyOn(Printer, 'assignCreditColor')
+    //     //Act
+    //     Printer.assignCreditColor(transactionPadding1); // single element at a time since this method is called from another method running a loop
+
+    //     //Assert
+    //     expect(assignCreditColorSpy).toHaveBeenCalledWith(transactionPadding1);
+    // });
+
+    // it('test 7 - should call colorGreen() method ', () => {
+    //     //Arrange
+    //     const colorGreenSpy = spyOn(Printer, 'colorGreen')
+    //     //Act
+    //     Printer.colorGreen();
+
+    //     //Assert
+    //     expect(colorGreenSpy).toHaveBeenCalled;
+    // });
+
+    // it('test 8 - should return expected value of colorGreen() ', () => {
+    //     //Arrange
+    //     const colorGreenReturn = `\x1b[0;32m`;
+    //     //Act
+    //     let actual = Printer.colorGreen();
+
+    //     //Assert
+    //     expect(actual).toBe(colorGreenReturn);
+    // });
+
+});

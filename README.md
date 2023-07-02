@@ -114,13 +114,18 @@ So customers can see more clearly deposit transaction type
 
 -Objects;       -Properties;                          -Messages;                                    -Output;
                                                    
--Printer;                                             -creditColor(@String)                         -@String
-             
-                                            
+-Printer;                                             -assignCreditColor(@Transaction)              -@void
+                                                      -colorGreen()                                 -@String
+                                                      -resetColor()                                 -@String
 ### User Story 6
 As a bank company
 I want printable bank statements of accounts to include red text for debited values 
 So customers can see more clearly withdraw transaction type
+
+-Objects;       -Properties;                          -Messages;                                    -Output;
+                                                   
+-Printer;                                             -assignDebitColor(@Transaction)               -@void
+                                                      -colorRed()                                   -@String
 
 ### User Story 7
 As a bank company
