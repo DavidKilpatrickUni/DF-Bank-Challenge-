@@ -51,44 +51,37 @@ So that we can do business through transactions
 
 ### Domain Model
 
-|Objects;     |Properties;                            |Messages;                        |Output;
-|:------------|:--------------------------------------|:--------------------------------|:----------                                    
-|Account;     |accountID @Number;                     |                                 |
-|             |balance @Number;                       |                                 |
-|             |listOfTransaction @Array[Transaction]; |makeTransaction(@Transaction);   |@void;                 
-|             |                                       |                                 |
-|Transaction; |transactionID @Number                  |                                 |
+|**Objects**     |**Properties**                         |**Messages**                     |**Output**
+|:---------------|:--------------------------------------|:--------------------------------|:----------                                    
+|**Account**     |accountID @Number;                     |                                 |
+|                |balance @Number;                       |                                 |
+|                |listOfTransaction @Array[Transaction]  |makeTransaction(@Transaction)    |@void                 
+|                |                                       |                                 |
+|**Transaction** |transactionID @Number                  |                                 |
 
 ### User Story 2
 As a bank company
 I want customers to be able to make deposits into their account
 So their money can be stored, tracked and recorded within the company
 
--Objects;       -Properties;                          -Messages;                                    -Output;
-                                                   
--Account;                                             -accountDeposit(@Transaction, @Number)        -@void
-             
-                                            
--Transaction    -balance @Number;                     -deposit(@number)                             -@void
-                -amountDeposited @Number;             -setAccountBalancePlus(@Number)               -@void
-                
-                
+|**Objects**     |**Properties**                         |**Messages**                           |**Output**
+|:---------------|:--------------------------------------|:--------------------------------------|:----------                                    
+|**Account**     |                                       |accountDeposit(@Transaction, @Number)  |@void     
+|                |                                       |                                       |
+|**Transaction** |transactionBalance @Number             |deposit(@number)                       |@void
+|                |amountDeposited @Number                |setAccountBalancePlus(@Number)         |@void               
 
 ### User Story 3
 As a bank company 
 I want customers to be able to withdraw money from their accounts
 So customers can retrieve their money whilst keeping the companies records correct
 
-
--Objects;       -Properties;                          -Messages;                                    -Output;
-                                                   
--Account;                                             -accountDeposit(@Transaction, @Number)        -@void
-             
-                                            
--Transaction    -amountWithdrawn @Number;             -withdraw(@number)                            -@void
-                                                      -setAccountBalanceMinus(@Number)              -@void
-                
-                
+|**Objects**     |**Properties**                         |**Messages**                           |**Output**
+|:---------------|:--------------------------------------|:--------------------------------------|:----------                                    
+|**Account**     |                                       |accountWithdraw(@Transaction, @Number) |@void                            
+|                |                                       |                                       |
+|**Transaction** |amountWithdrawn @Number                |withdraw(@number)                      |@void           
+|                |                                       |setAccountBalanceMinus(@Number)        |@void              
 
 
 ### User Story 4
@@ -96,14 +89,12 @@ As a bank company
 I want printable bank statements of accounts
 So customers can see transfers (deposit or withdraw), date of said transfers and the account balance
 
--Objects;       -Properties;                          -Messages;                                    -Output;
-                                                   
--Printer;                                             -printTransactions(@Array[Transaction])       -console.log(@String)
-             
-                                            
--Transaction    -date Date();                                                     
-                                                      
-
+|**Objects**     |**Properties**                         |**Messages**                           |**Output**
+|:---------------|:--------------------------------------|:--------------------------------------|:----------                                    
+|**Printer**     |                                       |printTransactions(@Array[Transaction]) |console.log(@String)                                                             
+|                |                                       |                                       |
+|**Transaction** |date @Date                             |                                       |      
+                                                                                     
 
 ### Extended 
 
@@ -112,20 +103,22 @@ As a bank company
 I want printable bank statements of accounts to include green text for credited values 
 So customers can see more clearly deposit transaction type
 
--Objects;       -Properties;                          -Messages;                                    -Output;
-                                                   
--Printer;                                             -assignCreditColor(@Transaction)              -@void
-                                                      -colorGreen()                                 -@String
-                                                      -resetColor()                                 -@String
+|**Objects**     |**Properties**                         |**Messages**                           |**Output**
+|:---------------|:--------------------------------------|:--------------------------------------|:----------                                                             
+|**Printer**     |                                       |assignCreditColor(@Transaction)        |@void           
+|                |                                       |colorGreen()                           |@string  
+|                |                                       |resetColor()                           |@string 
+
 ### User Story 6
 As a bank company
 I want printable bank statements of accounts to include red text for debited values 
 So customers can see more clearly withdraw transaction type
 
--Objects;       -Properties;                          -Messages;                                    -Output;
-                                                   
--Printer;                                             -assignDebitColor(@Transaction)               -@void
-                                                      -colorRed()                                   -@String
+
+|**Objects**     |**Properties**                         |**Messages**                           |**Output**
+|:---------------|:--------------------------------------|:--------------------------------------|:----------                                                             
+|**Printer**     |                                       |assignDebitColor(@Transaction)         |@void           
+|                |                                       |colorRed()                             |@string  
 
 
 ### Reasoning Next 2 User Stories can be done using the same Domain Model. If balance is >= 0 make me text green and red if < 0
@@ -140,29 +133,7 @@ As a bank company
 I want printable bank statements of accounts to include red text for negative balance values
 So customers can see more clearly balance condition
 
--Objects;       -Properties;                          -Messages;                                    -Output;
-                                                   
--Printer;                                             -assignBalanceColor(@Transaction)               -@void
-                                                 
+|**Objects**     |**Properties**                         |**Messages**                           |**Output**
+|:---------------|:--------------------------------------|:--------------------------------------|:----------                                                             
+|**Printer**     |                                       |assignBalanceColor(@Transaction)       |@void         
 
-
-
-
-
-
-
-
-
-
-
-
--Objects;     -Properties;                            -Messages;                      -Output;
-
--Transaction; -transactionID @String;                 -transactionDeposit();   
-              -dateOfTransaction @Date;
-                                                      
-
--Account;     -listOfTransaction @Array[Transaction]; -accountDeposit();                       -@Void;
-              
-              
-              -balance @decimal                       
