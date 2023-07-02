@@ -45,7 +45,6 @@ You may find this link useful [Output to the command line using NodeJS](https://
 ### Acceptance 
 
 ### User Story 1 
-- [x] Complete
 
 As a bank company
 I want to be able to have customers have accounts
@@ -62,7 +61,6 @@ So that we can do business through transactions
 |**Transaction** |transactionID @Number                  |                                 |
 
 ### User Story 2
-- [x] Complete
 
 As a bank company
 I want customers to be able to make deposits into their account
@@ -76,7 +74,6 @@ So their money can be stored, tracked and recorded within the company
 |                |amountDeposited @Number                |setAccountBalancePlus(@Number)         |@void               
 
 ### User Story 3
-- [x] Complete
 
 As a bank company 
 I want customers to be able to withdraw money from their accounts
@@ -90,7 +87,6 @@ So customers can retrieve their money whilst keeping the companies records corre
 |                |                                       |setAccountBalanceMinus(@Number)        |@void              
 
 ### User Story 4
-- [x] Complete
 
 As a bank company
 I want printable bank statements of accounts
@@ -106,7 +102,6 @@ So customers can see transfers (deposit or withdraw), date of said transfers and
 ### Extended 
 
 ### User Story 5
-- [x] Complete
 
 As a bank company
 I want printable bank statements of accounts to include green text for credited values 
@@ -119,7 +114,6 @@ So customers can see more clearly deposit transaction type
 |                |                                       |resetColor()                           |@string 
 
 ### User Story 6
-- [x] Complete
 
 As a bank company
 I want printable bank statements of accounts to include red text for debited values 
@@ -133,14 +127,12 @@ So customers can see more clearly withdraw transaction type
 # *Reasoning Next 2 User Stories can be done using the same Domain Model. If balance is >= 0 make me text green and red if < 0*
 
 ### User Story 7
-- [x] Complete
 
 As a bank company
 I want printable bank statements of accounts to include green text for positive balance values
 So customers can see more clearly balance condition
 
 ### User Story 8
-- [x] Complete
 
 As a bank company
 I want printable bank statements of accounts to include red text for negative balance values
