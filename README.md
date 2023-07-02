@@ -46,6 +46,7 @@ You may find this link useful [Output to the command line using NodeJS](https://
 
 ### User Story 1 
 - [x] Complete
+
 As a bank company
 I want to be able to have customers have accounts
 So that we can do business through transactions
@@ -62,6 +63,7 @@ So that we can do business through transactions
 
 ### User Story 2
 - [x] Complete
+
 As a bank company
 I want customers to be able to make deposits into their account
 So their money can be stored, tracked and recorded within the company
@@ -75,6 +77,7 @@ So their money can be stored, tracked and recorded within the company
 
 ### User Story 3
 - [x] Complete
+
 As a bank company 
 I want customers to be able to withdraw money from their accounts
 So customers can retrieve their money whilst keeping the companies records correct
@@ -88,6 +91,7 @@ So customers can retrieve their money whilst keeping the companies records corre
 
 ### User Story 4
 - [x] Complete
+
 As a bank company
 I want printable bank statements of accounts
 So customers can see transfers (deposit or withdraw), date of said transfers and the account balance
@@ -103,6 +107,7 @@ So customers can see transfers (deposit or withdraw), date of said transfers and
 
 ### User Story 5
 - [x] Complete
+
 As a bank company
 I want printable bank statements of accounts to include green text for credited values 
 So customers can see more clearly deposit transaction type
@@ -115,6 +120,7 @@ So customers can see more clearly deposit transaction type
 
 ### User Story 6
 - [x] Complete
+
 As a bank company
 I want printable bank statements of accounts to include red text for debited values 
 So customers can see more clearly withdraw transaction type
@@ -124,16 +130,18 @@ So customers can see more clearly withdraw transaction type
 |**Printer**     |                                       |assignDebitColor(@Transaction)         |@void           
 |                |                                       |colorRed()                             |@string  
 
-## *Reasoning Next 2 User Stories can be done using the same Domain Model. If balance is >= 0 make me text green and red if < 0*
+# *Reasoning Next 2 User Stories can be done using the same Domain Model. If balance is >= 0 make me text green and red if < 0*
 
 ### User Story 7
 - [x] Complete
+
 As a bank company
 I want printable bank statements of accounts to include green text for positive balance values
 So customers can see more clearly balance condition
 
 ### User Story 8
 - [x] Complete
+
 As a bank company
 I want printable bank statements of accounts to include red text for negative balance values
 So customers can see more clearly balance condition
