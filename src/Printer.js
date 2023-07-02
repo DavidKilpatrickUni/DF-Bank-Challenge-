@@ -67,7 +67,9 @@ class Printer {
         console.log('date       || credit  || debit  || balance');
     }
 
-
+    static colorGreen() {
+        return `\x1b[0;32m`;
+    }
 
 
 }
