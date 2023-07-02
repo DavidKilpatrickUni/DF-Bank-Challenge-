@@ -2,60 +2,86 @@ import Printer from '../src/Printer.js';
 
 
 class MockTransaction1 {
-    getDate = () => new Date("2012-1-10").toLocaleDateString('en-UK');
-    setDate = date => { };
-    getAmountDeposited = () => 1000;
-    setAmountDeposited = amount => { };
-    getAmountWithdrawn = () => undefined;
-    setAmountWithdrawn = amount => { };
-    getTransactionBalance = () => 1000;
-    setTransactionBalance = balance => { };
+
+    date = new Date("2012-1-10").toLocaleDateString('en-UK');
+    amountDeposited = 1000;
+    amountWithdrawn = undefined;
+    balance = 1000;
+
+    getDate = () => this.date;
+    setDate = date => { this.date = date };
+    getAmountDeposited = () => this.amountDeposited;
+    setAmountDeposited = amount => { this.amountDeposited = amount };
+    getAmountWithdrawn = () => this.amountWithdrawn;
+    setAmountWithdrawn = amount => { this.amountWithdrawn = amount };
+    getTransactionBalance = () => this.balance;
+    setTransactionBalance = amount => { this.balance = amount };
 }
 
-class MockTransaction1Formated {
-    getDate = () => ('2012/1/10  ');
-    setDate = date => { };
-    getAmountDeposited = () => ' 1000.00 ';
-    setAmountDeposited = amount => { };
-    getAmountWithdrawn = () => '        ';
-    setAmountWithdrawn = amount => { };
-    getTransactionBalance = () => ' 1000.00 ';
-    setTransactionBalance = balance => { };
+class MockTransactionFixed1 {
+
+    date = "10/01/2012";
+    amountDeposited = '1000.00';
+    amountWithdrawn = '0.00';
+    balance = '1000.00';
+
+    getDate = () => this.date;
+    setDate = date => { this.date = date };
+    getAmountDeposited = () => this.amountDeposited;
+    setAmountDeposited = amount => { this.amountDeposited = amount };
+    getAmountWithdrawn = () => this.amountWithdrawn;
+    setAmountWithdrawn = amount => { this.amountWithdrawn = amount };
+    getTransactionBalance = () => this.balance;
+    setTransactionBalance = amount => { this.balance = amount };
 }
 
-class MockTransaction2 {
+class MockTransactionPadding1 {
 
+    date = "10/01/2012 ";
+    amountDeposited = ' 1000.00 ';
+    amountWithdrawn = '  0.00';
+    balance = ' 1000.00 ';
+
+    getDate = () => this.date;
+    setDate = date => { this.date = date };
+    getAmountDeposited = () => this.amountDeposited;
+    setAmountDeposited = amount => { this.amountDeposited = amount };
+    getAmountWithdrawn = () => this.amountWithdrawn;
+    setAmountWithdrawn = amount => { this.amountWithdrawn = amount };
+    getTransactionBalance = () => this.balance;
+    setTransactionBalance = amount => { this.balance = amount };
 }
 
-class MockTransaction3 {
 
-}
 
-class MockAccount {
-};
 
 describe('Printer Tests - User Story 4', () => {
 
-    let account;
-    let transaction1, transaction2, transaction3;
-    let transactionArrayOne, transactionArrayMulti;
+
+    let transaction1;
+    let transactionFixed1;
+    let transactionPadding1;
+    let transactionArrayOneElement;
+    let transactionArrayOneElementFixed;
+    let transactionArrayOneElementPadding;
 
     beforeEach(() => {
-        account = new MockAccount();
         transaction1 = new MockTransaction1();
-        transaction2 = new MockTransaction2();
-        transaction3 = new MockTransaction3();
-        transactionArrayOne = [transaction1]
-        transactionArrayMulti = [transaction1, transaction2, transaction3];
+        transactionFixed1 = new MockTransactionFixed1();
+        transactionPadding1 = new MockTransactionPadding1();
+        transactionArrayOneElement = [transaction1]
+        transactionArrayOneElementFixed = [transactionFixed1]
+        transactionArrayOneElementPadding = [transactionPadding1]
     });
 
     afterEach(() => {
-        account = undefined;
         transaction1 = undefined;
-        transaction2 = undefined;
-        transaction3 = undefined;
-        transactionArrayOne = undefined
-        transactionArrayMulti = undefined;
+        transactionFixed1 = undefined;
+        transactionPadding1 = undefined;
+        transactionArrayOneElement = undefined;
+        transactionArrayOneElementFixed = undefined;
+        transactionArrayOneElementPadding = undefined;
+
     });
 
     it('test 1 - should call printTransaction() method', () => {
@@ -75,10 +101,10 @@ describe('Printer Tests - User Story 4', () => {
         const printTransactionSpy = spyOn(Printer, 'printTransactions')
 
         //Act
-        Printer.printTransactions(transactionArrayOne);
+        Printer.printTransactions(transactionArrayOneElement);
 
         //Assert
-        expect(printTransactionSpy).toHaveBeenCalledWith(transactionArrayOne);
+        expect(printTransactionSpy).toHaveBeenCalledWith(transactionArrayOneElement);
     });
 
     it('test 3 - should call getFormat method', () => {
@@ -97,10 +123,10 @@ describe('Printer Tests - User Story 4', () => {
         const getFormatSpy = spyOn(Printer, 'getFormat')
 
         //Act
-        Printer.getFormat(transactionArrayOne);
+        Printer.getFormat(transactionArrayOneElement);
 
         //Assert
-        expect(getFormatSpy).toHaveBeenCalledWith(transactionArrayOne);
+        expect(getFormatSpy).toHaveBeenCalledWith(transactionArrayOneElement);
     });
 
     it('test 5 - should call getHeader method', () => {
@@ -108,7 +134,7 @@ describe('Printer Tests - User Story 4', () => {
         const getHeaderSpy = spyOn(Printer, 'getHeader')
 
         //Act
-        Printer.getHeader(transactionArrayOne);
+        Printer.getHeader(transactionArrayOneElement);
 
         //Assert
         expect(getHeaderSpy).toHaveBeenCalled;
@@ -130,7 +156,7 @@ describe('Printer Tests - User Story 4', () => {
         const toFixedSpy = spyOn(Printer, 'toFixed')
 
         //Act
-        Printer.toFixed(transactionArrayOne);
+        Printer.toFixed(transactionArrayOneElement);
 
         //Assert
         expect(toFixedSpy).toHaveBeenCalled;
@@ -141,10 +167,10 @@ describe('Printer Tests - User Story 4', () => {
         const toFixedSpy = spyOn(Printer, 'toFixed')
 
         //Act
-        Printer.toFixed(transactionArrayOne);
+        Printer.toFixed(transactionArrayOneElement);
 
         //Assert
-        expect(toFixedSpy).toHaveBeenCalledWith(transactionArrayOne);
+        expect(toFixedSpy).toHaveBeenCalledWith(transactionArrayOneElement);
     });
 
 
@@ -153,7 +179,7 @@ describe('Printer Tests - User Story 4', () => {
         const paddingSpy = spyOn(Printer, 'padding')
 
         //Act
-        Printer.padding(transactionArrayOne);
+        Printer.padding(transactionArrayOneElement);
 
         //Assert
         expect(paddingSpy).toHaveBeenCalled;
@@ -164,10 +190,135 @@ describe('Printer Tests - User Story 4', () => {
         const paddingSpy = spyOn(Printer, 'padding')
 
         //Act
-        Printer.padding(transactionArrayOne);
+        Printer.padding(transactionArrayOneElement);
 
         //Assert
-        expect(paddingSpy).toHaveBeenCalledWith(transactionArrayOne);
+        expect(paddingSpy).toHaveBeenCalledWith(transactionArrayOneElement);
+    });
+
+
+    it('test 11 - should change amountDeposited property to expected after toFixed', () => {
+        //Arrange
+
+        //Act
+        Printer.toFixed(transactionArrayOneElement);
+
+        //Assert
+        expect(transactionArrayOneElement[0].getAmountDeposited()).toBe('1000.00');
+    });
+
+    it('test 12 - should change amountWithdrawn property to expected after toFixed', () => {
+        //Arrange
+
+        //Act
+        Printer.toFixed(transactionArrayOneElement);
+
+        //Assert
+        expect(transactionArrayOneElement[0].getAmountWithdrawn()).toBe('');
+    });
+
+    it('test 13 - should change balance property to expected after toFixed', () => {
+        //Arrange
+
+        //Act
+        Printer.toFixed(transactionArrayOneElement);
+
+        //Assert
+        expect(transactionArrayOneElement[0].getTransactionBalance()).toBe('1000.00');
+    });
+
+    it('test 14 - should change date property to expected after padding', () => {
+        //Arrange
+
+        //Act
+        Printer.padding(transactionArrayOneElementFixed);
+
+        //Assert
+        expect(transactionArrayOneElementFixed[0].getDate()).toBe('10/01/2012 '); // padding of 11
+    });
+    it('test 15 - should change amountDeposited property to expected after padding', () => {
+        //Arrange
+
+        //Act
+        Printer.padding(transactionArrayOneElementFixed);
+
+        //Assert
+        expect(transactionArrayOneElementFixed[0].getAmountDeposited()).toBe(' 1000.00 '); // padding 8 and 9
+    });
+
+    it('test 16 - should change amountWithdrawn property to expected after padding', () => {
+        //Arrange
+
+        //Act
+        Printer.padding(transactionArrayOneElementFixed);
+
+        //Assert
+        expect(transactionArrayOneElementFixed[0].getAmountWithdrawn()).toBe('   0.00 '); // padding 7 and 8
+    });
+
+    it('test 17 - should change balance property to expected after padding', () => {
+        //Arrange
+
+        //Act
+        Printer.padding(transactionArrayOneElementFixed);
+
+        //Assert
+        expect(transactionArrayOneElementFixed[0].getTransactionBalance()).toBe(' 1000.00 '); // padding 8 and 9
+    });
+
+    it('test 18 - should call displayTransactions() method', () => {
+        //Arrange
+        const displayTransactionsSpy = spyOn(Printer, 'displayTransactions')
+
+        //Act
+        Printer.displayTransactions(transactionArrayOneElementPadding);
+
+        //Assert
+        expect(displayTransactionsSpy).toHaveBeenCalled;
+    });
+
+    it('test 19 - should call displayTransactions() method with parameter', () => {
+        //Arrange
+        const displayTransactionsSpy = spyOn(Printer, 'displayTransactions')
+
+        //Act
+        Printer.displayTransactions(transactionArrayOneElementPadding);
+
+        //Assert
+        expect(displayTransactionsSpy).toHaveBeenCalledWith(transactionArrayOneElementPadding);
+    });
+
+    it('test 20 - should call console.log method as part of displayTransactions()', () => {
+        //Arrange
+        const consoleSpy = spyOn(console, 'log')
+
+        //Act
+        Printer.displayTransactions(transactionArrayOneElementPadding);
+
+        //Assert
+        expect(consoleSpy).toHaveBeenCalled;
+    });
+
+    it('test 21 - should call console.log method as part of displayTransactions() expected number of times', () => {
+        //Arrange
+        const consoleSpy = spyOn(console, 'log')
+
+        //Act
+        Printer.displayTransactions(transactionArrayOneElementPadding);
+
+        //Assert
+        expect(consoleSpy).toHaveBeenCalled;
+    });
+
+    it('test 22 - should call console.log method with parameter as part of displayTransactions()', () => {
+        //Arrange
+        const consoleSpy = spyOn(console, 'log')
+        const consoleOutput = '10/01/2012 || 1000.00 ||  0.00|| 1000.00 '
+        //Act
+        Printer.displayTransactions(transactionArrayOneElementPadding);
+
+        //Assert
+        expect(consoleSpy).toHaveBeenCalledWith(consoleOutput);
     });
 
 })

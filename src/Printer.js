@@ -39,10 +39,10 @@ class Printer {
     static padding(transactionList) {
 
         for (let loop = 0; loop < transactionList.length; loop++) {
-            transactionList[loop].setDate(transactionList[loop].getDate().padEnd(11));
-            transactionList[loop].setAmountDeposited(transactionList[loop].getAmountDeposited().padStart(8).padEnd(9));
-            transactionList[loop].setAmountWithdrawn(transactionList[loop].getAmountWithdrawn().padStart(7).padEnd(8));
-            transactionList[loop].setTransactionBalance(transactionList[loop].getTransactionBalance().padStart(8).padEnd(9));
+            transactionList[loop].setDate(transactionList[loop].getDate().toString().padEnd(11));
+            transactionList[loop].setAmountDeposited(transactionList[loop].getAmountDeposited().toString().padStart(8).padEnd(9));
+            transactionList[loop].setAmountWithdrawn(transactionList[loop].getAmountWithdrawn().toString().padStart(7).padEnd(8));
+            transactionList[loop].setTransactionBalance(transactionList[loop].getTransactionBalance().toString().padStart(8).padEnd(9));
         }
 
         // transactionList.forEach((transaction) => {
