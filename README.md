@@ -30,21 +30,22 @@ date       || credit  || debit  || balance
 
 
 #### Standard
-- [ ] Meets the spec
-- [ ] Developed test-first
-- [ ] Passes tests and code is clean and well formatted
-- [ ] Encapsulates adding and storing Transactions in a class
-- [ ] Encapsulates Statement formatting in a class
-- [ ] Encapsulates Transaction data in a class
+- [x] Meets the spec
+- [x] Developed test-first
+- [x] Passes tests and code is clean and well formatted
+- [x] Encapsulates adding and storing Transactions in a class
+- [x] Encapsulates Statement formatting in a class
+- [x] Encapsulates Transaction data in a class
 
 #### Extended
-- [ ] Can you format the console output?  Credited values should be GREEN and debited values should be RED.  The balance should be GREEN if positive and RED if negative
+- [x] Can you format the console output?  Credited values should be GREEN and debited values should be RED.  The balance should be GREEN if positive and RED if negative
 
 You may find this link useful [Output to the command line using NodeJS](https://nodejs.dev/en/learn/output-to-the-command-line-using-nodejs/) - check the formatting section (and this links out to a GitHub doc on the [ANSI color codes](https://gist.github.com/iamnewton/8754917))
 
 ### Acceptance 
 
-### User Story 1
+### User Story 1 
+-[x] Complete
 As a bank company
 I want to be able to have customers have accounts
 So that we can do business through transactions
@@ -55,11 +56,12 @@ So that we can do business through transactions
 |:---------------|:--------------------------------------|:--------------------------------|:----------                                    
 |**Account**     |accountID @Number;                     |                                 |
 |                |balance @Number;                       |                                 |
-|                |listOfTransaction @Array[Transaction]  |makeTransaction(@Transaction)    |@void                 
+|                |transactionList @Array[Transaction]    |makeTransaction(@Transaction)    |@void                 
 |                |                                       |                                 |
 |**Transaction** |transactionID @Number                  |                                 |
 
 ### User Story 2
+-[x] Complete
 As a bank company
 I want customers to be able to make deposits into their account
 So their money can be stored, tracked and recorded within the company
@@ -72,6 +74,7 @@ So their money can be stored, tracked and recorded within the company
 |                |amountDeposited @Number                |setAccountBalancePlus(@Number)         |@void               
 
 ### User Story 3
+-[x] Complete
 As a bank company 
 I want customers to be able to withdraw money from their accounts
 So customers can retrieve their money whilst keeping the companies records correct
@@ -85,6 +88,7 @@ So customers can retrieve their money whilst keeping the companies records corre
 
 
 ### User Story 4
+-[x] Complete
 As a bank company
 I want printable bank statements of accounts
 So customers can see transfers (deposit or withdraw), date of said transfers and the account balance
@@ -92,6 +96,7 @@ So customers can see transfers (deposit or withdraw), date of said transfers and
 |**Objects**     |**Properties**                         |**Messages**                           |**Output**
 |:---------------|:--------------------------------------|:--------------------------------------|:----------                                    
 |**Printer**     |                                       |printTransactions(@Array[Transaction]) |console.log(@String)                                                             
+|                |                                       |format(@Transaction)                   |@void
 |                |                                       |                                       |
 |**Transaction** |date @Date                             |                                       |      
                                                                                      
@@ -99,6 +104,7 @@ So customers can see transfers (deposit or withdraw), date of said transfers and
 ### Extended 
 
 ### User Story 5
+-[x] Complete
 As a bank company
 I want printable bank statements of accounts to include green text for credited values 
 So customers can see more clearly deposit transaction type
@@ -110,6 +116,7 @@ So customers can see more clearly deposit transaction type
 |                |                                       |resetColor()                           |@string 
 
 ### User Story 6
+-[x] Complete
 As a bank company
 I want printable bank statements of accounts to include red text for debited values 
 So customers can see more clearly withdraw transaction type
@@ -124,11 +131,13 @@ So customers can see more clearly withdraw transaction type
 ### Reasoning Next 2 User Stories can be done using the same Domain Model. If balance is >= 0 make me text green and red if < 0
 
 ### User Story 7
+-[x] Complete
 As a bank company
 I want printable bank statements of accounts to include green text for positive balance values
 So customers can see more clearly balance condition
 
 ### User Story 8
+-[x] Complete
 As a bank company
 I want printable bank statements of accounts to include red text for negative balance values
 So customers can see more clearly balance condition
